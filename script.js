@@ -56,6 +56,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li><strong>핵심 컨셉:</strong> 영웅전설 IP를 활용한 수집형 RPG</li>
                     <li><strong>주요 타겟:</strong> 영웅전설 IP를 알고 있는 3,40대 모바일 게임 유저</li>
                 </ul>
+                <div style="text-align: center; margin: 30px 0;">
+                    <a href="legendofheroes.html" target="_blank" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, var(--accent-color), #2b82ff); color: #000; text-decoration: none; border-radius: 30px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 15px var(--accent-glow); transition: transform 0.2s;">
+                        📄 영웅전설 상세 기획서 (전체 원본 보기)
+                    </a>
+                </div>
                 <h4 style="color: #fff; margin-bottom: 10px;">2. 주요 담당 업무</h4>
                 <ul>
                     <li style="margin-bottom: 10px;"><strong>메인 컨텐츠 기획:</strong>
@@ -224,6 +229,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     <li><strong>핵심 컨셉:</strong> 수집형 턴제 SRPG</li>
                     <li><strong>주요 타겟:</strong> 전통 SRPG를 좋아하는 2,30대 유저</li>
                 </ul>
+                <div style="text-align: center; margin: 30px 0;">
+                    <a href="warofcrown.html" target="_blank" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, var(--accent-color), #2b82ff); color: #000; text-decoration: none; border-radius: 30px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 15px var(--accent-glow); transition: transform 0.2s;">
+                        📄 WAROFCROWN 상세 기획서 (전체 원본 보기)
+                    </a>
+                </div>
                 <h4 style="color: #fff; margin-bottom: 10px;">2. 주요 담당 업무</h4>
                 <ul>
                     <li style="margin-bottom: 10px;"><strong>픽업 스토리 컨텐츠:</strong>
