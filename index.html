@@ -11,6 +11,19 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Floating Header -->
+    <header class="navbar glass-card">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">HGR Portfolio</a>
+            <div class="nav-actions">
+                <button id="themeToggle" class="theme-toggle-btn" aria-label="테마 전환">
+                    <span class="sun-icon">☀️</span>
+                    <span class="moon-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
     <!-- Dynamic Background Blobs -->
     <div class="background-container">
         <div class="blob blob-1"></div>
@@ -19,24 +32,24 @@
     </div>
 
     <!-- Main Content -->
-    <div class="container">
+    <div class="container" style="margin-top: 100px;">
         
         <!-- Main Intro Area (2-Column) -->
         <div class="intro-grid fade-in">
             <!-- Left: Profile -->
             <aside class="profile-sidebar glass-card hover-glow">
                 <div class="profile-img-wrapper">
-                    <img src="assets/user_face.JPG" alt="홍가람 프로필" class="profile-img">
+                    <img src="assets/user_face.JPG?v=2" alt="홍가람 프로필" class="profile-img">
                 </div>
                 <h1 class="name">홍가람</h1>
                 <h2 class="title">11년 차 시스템/컨텐츠 기획자</h2>
                 <div class="contact-info">
-                    <a href="mailto:white140@naver.com" class="contact-btn">
-                        <span class="icon">✉️</span> white140@naver.com
-                    </a>
-                    <a href="tel:010-4775-0413" class="contact-btn">
-                        <span class="icon">📱</span> 010-4775-0413
-                    </a>
+                    <button class="contact-btn copy-btn" data-copy="white140@naver.com" title="클릭하여 이메일 복사">
+                        <span class="icon">✉️</span> white140@naver.com <span class="copy-hint">📋</span>
+                    </button>
+                    <button class="contact-btn copy-btn" data-copy="010-4775-0413" title="클릭하여 연락처 복사">
+                        <span class="icon">📱</span> 010-4775-0413 <span class="copy-hint">📋</span>
+                    </button>
                 </div>
                 
                 <div class="core-competencies">
@@ -126,6 +139,7 @@
                 
                 <!-- Skill Item -->
                 <div class="skill-card glass-card hover-glow">
+                    <div class="skill-tooltip">기획서 작성, DB 연동 문서화, 일정 관리 및 협업 툴 관리</div>
                     <div class="skill-info">
                         <span class="skill-name">Notion</span>
                         <span class="skill-level">Level 3</span>
@@ -140,6 +154,7 @@
                 </div>
 
                 <div class="skill-card glass-card hover-glow">
+                    <div class="skill-tooltip">밸런스 시뮬레이터 설계, 수식 연동 데이터 가공 및 테이블 구조 설계</div>
                     <div class="skill-info">
                         <span class="skill-name">Excel</span>
                         <span class="skill-level">Level 5</span>
@@ -154,6 +169,7 @@
                 </div>
 
                 <div class="skill-card glass-card hover-glow">
+                    <div class="skill-tooltip">상용 프로젝트 씬 설정, UI 배치, 데이터 테이블 로드 및 테스트 수행</div>
                     <div class="skill-info">
                         <span class="skill-name">Unity</span>
                         <span class="skill-level">Level 5</span>
@@ -168,6 +184,7 @@
                 </div>
 
                 <div class="skill-card glass-card hover-glow">
+                    <div class="skill-tooltip">AI 프롬프트 엔지니어링을 활용한 초기 컨셉 도출, 코드 보조, 기획 초안 고도화</div>
                     <div class="skill-info">
                         <span class="skill-name">Claude & Gemini (AI)</span>
                         <span class="skill-level">Level 4</span>
@@ -187,9 +204,18 @@
         <!-- Portfolio Gallery -->
         <section class="portfolio fade-in">
             <h3 class="section-title">🎮 Portfolio Projects</h3>
+            
+            <!-- Category Filter Tabs -->
+            <div class="filter-container">
+                <button class="filter-btn active" data-filter="all">전체보기</button>
+                <button class="filter-btn" data-filter="rpg">수집형 RPG</button>
+                <button class="filter-btn" data-filter="mmorpg">MMORPG</button>
+                <button class="filter-btn" data-filter="etc">삼국지 & 기타</button>
+            </div>
+
             <div class="gallery-grid">
                 
-                <div class="project-card glass-card hover-glow" data-project="legend">
+                <div class="project-card glass-card hover-glow" data-project="legend" data-category="rpg">
                     <div class="img-wrapper">
                         <img src="assets/proj_legend_heroes.png" alt="영웅전설:가가브트릴로지">
                     </div>
@@ -198,7 +224,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="moonlight">
+                <div class="project-card glass-card hover-glow" data-project="moonlight" data-category="mmorpg">
                     <div class="img-wrapper">
                         <img src="assets/proj_moonlight.png" alt="달빛조각사 & 다크게이머">
                     </div>
@@ -207,7 +233,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="madworld">
+                <div class="project-card glass-card hover-glow" data-project="madworld" data-category="mmorpg">
                     <div class="img-wrapper">
                         <img src="assets/proj_madworld.png" alt="MADWORLD">
                     </div>
@@ -216,7 +242,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="warofcrown">
+                <div class="project-card glass-card hover-glow" data-project="warofcrown" data-category="rpg">
                     <div class="img-wrapper">
                         <img src="assets/proj_warofcrown.png" alt="WAROFCROWN">
                     </div>
@@ -225,7 +251,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="slashheavens">
+                <div class="project-card glass-card hover-glow" data-project="slashheavens" data-category="rpg etc">
                     <div class="img-wrapper">
                         <img src="assets/proj_slash_heavens.png" alt="천지를베다">
                     </div>
@@ -234,7 +260,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="guardians">
+                <div class="project-card glass-card hover-glow" data-project="guardians" data-category="rpg">
                     <div class="img-wrapper">
                         <img src="assets/proj_guardians.png" alt="가디언즈">
                     </div>
@@ -255,17 +281,49 @@
     <div class="modal-overlay" id="projectModal">
         <div class="modal-content glass-card">
             <button class="modal-close" id="closeModal">&times;</button>
-            <div class="modal-header">
-                <h2 id="modalTitle">프로젝트 이름</h2>
-                <h4 id="modalRole" class="modal-role">담당 역할</h4>
-            </div>
-            <div class="modal-body">
-                <img id="modalImage" src="" alt="Project Image" class="modal-main-img">
-                <div class="modal-text" id="modalText">
-                    프로젝트 상세 내용이 이곳에 표시됩니다.
+            <div class="modal-grid">
+                <!-- Left: Sticky Sidebar -->
+                <div class="modal-sidebar">
+                    <div class="modal-img-wrapper">
+                        <img id="modalImage" src="" alt="Project Image" class="modal-main-img">
+                    </div>
+                    <div class="modal-meta-box">
+                        <h2 id="modalTitle">프로젝트 이름</h2>
+                        <div class="modal-meta-item">
+                            <span class="icon">💼</span> <span id="modalRole" class="modal-role">담당 역할</span>
+                        </div>
+                        <div class="modal-meta-item">
+                            <span class="icon">📅</span> <span id="modalPeriod">진행 기간</span>
+                        </div>
+                        <div id="modalBadges" class="modal-badges">
+                            <!-- Dynamic Badges -->
+                        </div>
+                        <div id="modalLinkContainer" class="modal-link-container">
+                            <!-- Dynamic Link Button -->
+                        </div>
+                    </div>
+                </div>
+                <!-- Right: Scrollable details -->
+                <div class="modal-details">
+                    <div class="modal-text" id="modalText">
+                        프로젝트 상세 내용이 이곳에 표시됩니다.
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <!-- Lightbox for Image Zoom -->
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="closeLightbox">&times;</button>
+        <img class="lightbox-img" id="lightboxImage" src="" alt="Expanded View">
+        <div class="lightbox-caption" id="lightboxCaption">이미지 캡션</div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast glass-card">
+        <span class="toast-icon">✨</span>
+        <span class="toast-message" id="toastMessage">복사되었습니다!</span>
     </div>
 
     <script src="script.js"></script>

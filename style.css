@@ -6,13 +6,76 @@
     --accent-color: #45f3ff;
     --accent-glow: rgba(69, 243, 255, 0.5);
     
-    --glass-bg: rgba(25, 28, 36, 0.4);
+    --glass-bg: rgba(25, 28, 36, 0.45);
     --glass-border: rgba(255, 255, 255, 0.08);
     --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
     
     --blob-1: #663dff;
     --blob-2: #45f3ff;
     --blob-3: #ff3d77;
+}
+
+[data-theme="light"] {
+    --bg-color: #f5f7fa;
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --accent-color: #0f766e;
+    --accent-glow: rgba(15, 118, 110, 0.3);
+    
+    --glass-bg: rgba(255, 255, 255, 0.65);
+    --glass-border: rgba(15, 23, 42, 0.08);
+    --glass-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
+    
+    --blob-1: #c7d2fe;
+    --blob-2: #bae6fd;
+    --blob-3: #fecdd3;
+}
+
+/* Light mode overrides for text readability */
+[data-theme="light"] .profile-sidebar .name {
+    background: linear-gradient(90deg, var(--text-primary), var(--text-secondary)) !important;
+    -webkit-background-clip: text !important;
+}
+
+[data-theme="light"] .core-competencies .summary-text {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .company-name {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .skill-name {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .project-info h4 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .modal-meta-box h2 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .modal-text h4 {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .modal-close {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .doc-title {
+    color: var(--text-primary) !important;
+}
+
+[data-theme="light"] .back-btn:hover {
+    color: var(--text-primary) !important;
+}
+
+/* Global transitions for theme changing */
+body, .glass-card, .profile-sidebar, .career-timeline-area, .skill-card, .project-card, .project-info, footer, .navbar, .theme-toggle-btn, .contact-btn, .modal-content, .modal-meta-box {
+    transition: background-color 0.4s ease, color 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
 }
 
 /* Reset & Global */
@@ -370,6 +433,44 @@ body {
     box-shadow: 0 0 8px var(--accent-glow);
 }
 
+/* Category Filter Tabs */
+.filter-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 40px;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    color: var(--text-secondary);
+    padding: 10px 22px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.filter-btn:hover {
+    color: var(--text-primary);
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.filter-btn.active {
+    background: linear-gradient(135deg, var(--accent-color), #2b82ff);
+    color: #0b0c10;
+    border-color: transparent;
+    box-shadow: 0 4px 15px var(--accent-glow);
+    font-weight: 700;
+}
+
 /* Portfolio Gallery */
 .gallery-grid {
     display: grid;
@@ -381,6 +482,22 @@ body {
     display: flex;
     flex-direction: column;
     height: 100%;
+    animation: cardAppear 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.project-card.hide {
+    display: none;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
 }
 
 .img-wrapper {
@@ -638,6 +755,7 @@ footer {
     height: auto;
     border-radius: 12px;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    background-color: #ffffff; /* Fix for transparent PNGs */
 }
 
 @media (max-width: 768px) {
@@ -649,6 +767,463 @@ footer {
     .back-btn {
         position: static;
         transform: none;
+    }
+}
+
+/* ==========================================================================
+   FLOATING NAVBAR & THEME TOGGLE
+   ========================================================================== */
+.navbar {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 1200px;
+    height: 70px;
+    padding: 0 30px;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    border-radius: 50px !important;
+}
+
+.navbar:hover {
+    transform: translateX(-50%) !important;
+    border-color: var(--glass-border) !important;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-logo {
+    font-size: 1.3rem;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    background: linear-gradient(90deg, #fff, var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.5px;
+}
+
+[data-theme="light"] .nav-logo {
+    background: linear-gradient(90deg, #0f172a, var(--accent-color));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.nav-actions {
+    display: flex;
+    align-items: center;
+}
+
+.theme-toggle-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.theme-toggle-btn:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: rotate(15deg) scale(1.1);
+    box-shadow: 0 0 12px var(--accent-glow);
+}
+
+[data-theme="light"] .theme-toggle-btn {
+    background: rgba(0, 0, 0, 0.05);
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+.theme-toggle-btn .sun-icon {
+    display: none;
+}
+.theme-toggle-btn .moon-icon {
+    display: block;
+}
+
+[data-theme="light"] .theme-toggle-btn .sun-icon {
+    display: block;
+    filter: drop-shadow(0 0 4px rgba(251, 191, 36, 0.6));
+}
+[data-theme="light"] .theme-toggle-btn .moon-icon {
+    display: none;
+}
+
+/* ==========================================================================
+   CONTACT UTILITY & TOAST NOTIFICATION
+   ========================================================================== */
+.contact-btn {
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.copy-hint {
+    font-size: 0.85rem;
+    opacity: 0.4;
+    margin-left: auto;
+    transition: opacity 0.2s;
+}
+
+.contact-btn:hover .copy-hint {
+    opacity: 1;
+}
+
+.toast {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translate(-50%, 100px);
+    z-index: 3000;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-radius: 40px;
+    background: rgba(20, 24, 33, 0.9) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.4s;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.toast.active {
+    transform: translate(-50%, 0);
+    opacity: 1;
+}
+
+[data-theme="light"] .toast {
+    background: rgba(255, 255, 255, 0.95) !important;
+    border-color: rgba(15, 23, 42, 0.08);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+}
+
+.toast-message {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+[data-theme="light"] .toast-message {
+    color: #1e293b;
+}
+
+/* ==========================================================================
+   SKILL CARDS DYNAMIC ANIMATION & TOOLTIPS
+   ========================================================================== */
+.skill-card {
+    position: relative;
+}
+
+.skill-tooltip {
+    position: absolute;
+    bottom: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%) translateY(8px);
+    background: rgba(20, 24, 33, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    color: #fff;
+    width: max-content;
+    max-width: 260px;
+    text-align: center;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1), transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 10;
+    line-height: 1.4;
+}
+
+.skill-card:hover .skill-tooltip {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+[data-theme="light"] .skill-tooltip {
+    background: rgba(255, 255, 255, 0.98);
+    color: #1e293b;
+    border-color: rgba(15, 23, 42, 0.08);
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
+}
+
+.skill-card.play .skill-bars .bar.active {
+    opacity: 0;
+    transform: scaleX(0);
+    transform-origin: left;
+    animation: fillBar 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+}
+
+.skill-card.play .skill-bars .bar.active:nth-child(1) { animation-delay: 0.05s; }
+.skill-card.play .skill-bars .bar.active:nth-child(2) { animation-delay: 0.1s; }
+.skill-card.play .skill-bars .bar.active:nth-child(3) { animation-delay: 0.15s; }
+.skill-card.play .skill-bars .bar.active:nth-child(4) { animation-delay: 0.2s; }
+.skill-card.play .skill-bars .bar.active:nth-child(5) { animation-delay: 0.25s; }
+
+@keyframes fillBar {
+    to {
+        opacity: 1;
+        transform: scaleX(1);
+    }
+}
+
+/* ==========================================================================
+   2-COLUMN MODAL GRID & LIGHTBOX
+   ========================================================================== */
+.modal-grid {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 35px;
+    margin-top: 15px;
+}
+
+.modal-sidebar {
+    position: sticky;
+    top: 0;
+    align-self: start;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.modal-img-wrapper {
+    width: 100%;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 2px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.modal-sidebar .modal-main-img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    margin-bottom: 0; /* reset */
+    transition: transform 0.3s ease;
+}
+
+.modal-sidebar .modal-main-img:hover {
+    transform: scale(1.03);
+}
+
+.modal-meta-box {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 24px;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+}
+
+[data-theme="light"] .modal-meta-box {
+    background: rgba(15, 23, 42, 0.02);
+    border-color: rgba(15, 23, 42, 0.04);
+}
+
+.modal-meta-box h2 {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #fff;
+    line-height: 1.3;
+    margin: 0;
+    background: none;
+    -webkit-text-fill-color: initial;
+}
+
+[data-theme="light"] .modal-meta-box h2 {
+    color: var(--text-primary);
+}
+
+.modal-meta-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+}
+
+.modal-meta-item .modal-role,
+#modalPeriod {
+    font-weight: 600;
+}
+
+.modal-meta-item .modal-role {
+    color: var(--accent-color);
+}
+
+.modal-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 5px;
+}
+
+.modal-link-container {
+    margin-top: 10px;
+    width: 100%;
+}
+
+.modal-link-btn {
+    display: inline-block;
+    width: 100%;
+    padding: 14px;
+    text-align: center;
+    background: linear-gradient(135deg, var(--accent-color), #2b82ff);
+    color: #0b0c10 !important;
+    text-decoration: none;
+    border-radius: 12px;
+    font-weight: 800;
+    font-size: 0.95rem;
+    box-shadow: 0 4px 15px var(--accent-glow);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.modal-link-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px var(--accent-glow);
+}
+
+.modal-details {
+    overflow-y: visible;
+}
+
+.modal-inline-img {
+    cursor: zoom-in;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-inline-img:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+}
+
+/* Light Mode Overrides for Modal Content */
+[data-theme="light"] .modal-close {
+    color: #475569;
+}
+[data-theme="light"] .modal-close:hover {
+    color: var(--accent-color);
+}
+[data-theme="light"] .modal-header h2 {
+    color: #1e293b;
+}
+[data-theme="light"] .modal-role {
+    color: var(--accent-color);
+}
+[data-theme="light"] .badge {
+    background: rgba(15, 118, 110, 0.1);
+    border-color: rgba(15, 118, 110, 0.2);
+    color: var(--accent-color);
+}
+
+/* Light Mode Typography inside Modal */
+[data-theme="light"] .modal-text {
+    color: var(--text-secondary);
+}
+[data-theme="light"] .modal-text h4 {
+    color: #1e293b !important;
+}
+[data-theme="light"] .modal-text strong {
+    color: #0f172a;
+}
+[data-theme="light"] .modal-text ul li {
+    color: var(--text-secondary);
+}
+
+/* Lightbox Zoom Overlay */
+.lightbox-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background: rgba(10, 12, 16, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2500;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox-overlay.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.lightbox-img {
+    max-width: 90%;
+    max-height: 80vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+.lightbox-overlay.active .lightbox-img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 2.8rem;
+    cursor: pointer;
+    transition: color 0.2s, transform 0.2s;
+}
+
+.lightbox-close:hover {
+    color: #fff;
+    transform: scale(1.1);
+}
+
+.lightbox-caption {
+    color: rgba(255, 255, 255, 0.85);
+    margin-top: 18px;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: -0.3px;
+}
+
+/* ==========================================================================
+   RESPONSIVE MODAL MEDIA QUERY
+   ========================================================================== */
+@media (max-width: 850px) {
+    .modal-grid {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+    .modal-sidebar {
+        position: relative;
+        top: auto;
+    }
+    .modal-sidebar .modal-main-img {
+        max-height: 250px;
     }
 }
 

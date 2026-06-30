@@ -1,5 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Intersection Observer for scroll animations (fade-in)
+    // ==========================================================================
+    // 1. INTERSECTION OBSERVER FOR SCROLL ANIMATIONS (FADE-IN)
+    // ==========================================================================
     const fadeElements = document.querySelectorAll('.fade-in');
     
     const appearOptions = {
@@ -22,7 +24,9 @@ document.addEventListener('DOMContentLoaded', () => {
         appearOnScroll.observe(el);
     });
 
-    // 2. Mouse tracking for glass cards glow effect
+    // ==========================================================================
+    // 2. MOUSE TRACKING FOR GLASS CARDS GLOW EFFECT
+    // ==========================================================================
     const cards = document.querySelectorAll('.hover-glow');
     
     cards.forEach(card => {
@@ -36,34 +40,26 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Modal Logic for Project Details
+    // ==========================================================================
+    // 3. PROJECT DATA STRUCTURE & DYNAMIC MODAL RENDERING
+    // ==========================================================================
     const projectData = {
         "legend": {
             title: "영웅전설:가가브트릴로지",
             role: "메인 기획",
+            period: "2023.05 ~ 2026.02",
+            badges: ["#Dev", "#Global", "#Live", "#수집형RPG"],
+            link: { text: "📄 영웅전설 작업 산출물 (전체 원본 보기)", url: "legendofheroes.html" },
             image: "assets/proj_legend_heroes.png",
             content: `
-                <p><strong>기간:</strong> 2023.05 ~ 2026.02</p>
-                <div style="margin-top: 10px; margin-bottom: 10px;">
-                    <span class="badge">#Dev</span>
-                    <span class="badge">#Global</span>
-                    <span class="badge">#Live</span>
-                    <span class="badge">#수집형RPG</span>
-                </div>
-                <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-                <h4 style="color: #fff; margin-bottom: 10px;">1. 프로젝트 개요</h4>
+                <h4 style="color: #fff; margin-top: 0; margin-bottom: 10px;">1. 프로젝트 개요</h4>
                 <ul style="margin-bottom: 20px;">
                     <li><strong>핵심 컨셉:</strong> 영웅전설 IP를 활용한 수집형 RPG</li>
                     <li><strong>주요 타겟:</strong> 영웅전설 IP를 알고 있는 3,40대 모바일 게임 유저</li>
                 </ul>
-                <div style="text-align: center; margin: 30px 0;">
-                    <a href="legendofheroes.html" target="_blank" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, var(--accent-color), #2b82ff); color: #000; text-decoration: none; border-radius: 30px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 15px var(--accent-glow); transition: transform 0.2s;">
-                        📄 영웅전설 상세 기획서 (전체 원본 보기)
-                    </a>
-                </div>
                 <h4 style="color: #fff; margin-bottom: 10px;">2. 주요 담당 업무</h4>
                 <ul>
-                    <li style="margin-bottom: 10px;"><strong>메인 컨텐츠 기획:</strong>
+                    <li style="margin-bottom: 15px;"><strong>메인 컨텐츠 기획:</strong>
                         <ul style="margin-top: 5px;">
                             <li>수집형 RPG에서 플레이 패턴이 하나의 루트로 고정되면 유저 성향에 따른 이탈이 발생</li>
                             <li>모험·요일던전·무한의 탑·로그라이크 등 장르별 특성이 다른 컨텐츠를 설계</li>
@@ -80,7 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="assets/영웅전설 가가브트릴로지/image 2.png" class="modal-inline-img" alt="길드 메인 UI">
                         <img src="assets/영웅전설 가가브트릴로지/image 3.png" class="modal-inline-img" alt="길드 레이드 입장 UI">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>시즌 이벤트 기획:</strong>
+                    <li style="margin-bottom: 15px;"><strong>시즌 이벤트 기획:</strong>
                         <ul style="margin-top: 5px;">
                             <li>정기 업데이트 없는 라이브 서비스는 신선함이 사라지며 Retention이 하락</li>
                             <li>IP 외전 스토리 기반 시즌 이벤트를 설계하고 시즌 스케줄 시스템으로 일정 주기마다 새 컨텐츠를 오픈</li>
@@ -90,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         <img src="assets/영웅전설 가가브트릴로지/image 4.png" class="modal-inline-img" alt="시즌 이벤트 시스템 기획서">
                         <img src="assets/영웅전설 가가브트릴로지/image 5.png" class="modal-inline-img" alt="시즌 이벤트 - 미니게임 시스템 기획서">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>시스템 기획:</strong>
+                    <li style="margin-bottom: 15px;"><strong>시스템 기획:</strong>
                         <ul style="margin-top: 5px;">
                             <li><strong>스태미너 충전 시스템:</strong> 최대치 도달 시 충전이 멈추는 구조는 강제 접속 부담으로 유저 피로도를 높임. 자동 충전과 유료 충전을 이원화하여 최대치 초과 충전이 가능하도록 설계. 접속 압박 해소로 유저 편의성 향상</li>
                         </ul>
@@ -107,25 +103,19 @@ document.addEventListener('DOMContentLoaded', () => {
         "moonlight": {
             title: "달빛조각사 & 다크게이머",
             role: "서브 기획",
+            period: "2021.06 ~ 2023.04",
+            badges: ["#Dev", "#Global", "#Live", "#MMORPG", "#UNITY"],
+            link: { text: "📄 달빛조각사 작업 산출물 (전체 원본 보기)", url: "moonlight.html" },
             image: "assets/proj_moonlight.png",
             content: `
-                <p><strong>기간:</strong> 2021.06 ~ 2023.04</p>
-                <div style="margin-top: 10px; margin-bottom: 10px;">
-                    <span class="badge">#Dev</span>
-                    <span class="badge">#Global</span>
-                    <span class="badge">#Live</span>
-                    <span class="badge">#MMORPG</span>
-                    <span class="badge">#UNITY</span>
-                </div>
-                <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-                <h4 style="color: #fff; margin-bottom: 10px;">1. 프로젝트 개요</h4>
+                <h4 style="color: #fff; margin-top: 0; margin-bottom: 10px;">1. 프로젝트 개요</h4>
                 <ul style="margin-bottom: 20px;">
                     <li><strong>핵심 컨셉:</strong> 달빛조각사 IP를 활용한 MMORPG</li>
                     <li><strong>주요 타겟:</strong> 3,40대 MMORPG 유저 및 리니지, 오딘류의 게임을 좋아하는 유저</li>
                 </ul>
                 <h4 style="color: #fff; margin-bottom: 10px;">2. 주요 담당 업무</h4>
                 <ul>
-                    <li style="margin-bottom: 10px;"><strong>시스템 기획:</strong>
+                    <li style="margin-bottom: 15px;"><strong>시스템 기획:</strong>
                         <ul style="margin-top: 5px;">
                             <li><strong>이벤트 시스템:</strong> MMORPG는 매일 접속하는 루틴 동기가 없으면 Retention이 급격히 하락. 미션을 일차별로 순차 해금하여 매일 접속하지 않으면 얻을 수 없는 보상 구조를 설계. 데일리 루틴 형성을 유도하여 Retention 개선에 기여</li>
                         </ul>
@@ -135,14 +125,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         <img src="assets/달빛조각사 & 다크게이머/image 1.png" class="modal-inline-img" alt="장비 개조 개선 시스템 기획서">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>이벤트 기획:</strong>
+                    <li style="margin-bottom: 15px;"><strong>이벤트 기획:</strong>
                         <ul style="margin-top: 5px;">
                             <li>별도 이벤트 진입 동선이 있으면 참여율이 낮아지기 때문에, 일반 플레이 동선 안에서 이벤트 참여가 자연스럽게 발생하도록 미션·보상 구조를 설계하여 플레이 자체가 이벤트 참여가 되도록 구성</li>
                             <li>이벤트 참여율 향상, 기존 콘텐츠와 이벤트 보상 연계로 플레이 시간 증가</li>
                         </ul>
                         <img src="assets/달빛조각사 & 다크게이머/image 2.png" class="modal-inline-img" alt="이벤트 기획 문서">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>컨텐츠 기획:</strong>
+                    <li style="margin-bottom: 15px;"><strong>컨텐츠 기획:</strong>
                         <ul style="margin-top: 5px;">
                             <li><strong>레이드 보스:</strong> 단일 보스를 반복하는 구조는 전투가 단조로워져 체류 시간이 짧아짐. 웨이브 시스템 기반으로 보스를 순차 스폰하는 구조를 설계. 웨이브마다 다른 패턴 조합으로 전투 긴장감과 전략적 다양성을 부여, 반복 플레이에도 신선함 유지</li>
                         </ul>
@@ -159,31 +149,26 @@ document.addEventListener('DOMContentLoaded', () => {
         "madworld": {
             title: "MADWORLD",
             role: "리드 기획",
+            period: "2019.11 ~ 2021.05",
+            badges: ["#Dev", "#Global", "#HTML5", "#MMORPG"],
+            link: null,
             image: "assets/proj_madworld.png",
             content: `
-                <p><strong>기간:</strong> 2019.11 ~ 2021.05</p>
-                <div style="margin-top: 10px; margin-bottom: 10px;">
-                    <span class="badge">#Dev</span>
-                    <span class="badge">#Global</span>
-                    <span class="badge">#HTML5</span>
-                    <span class="badge">#MMORPG</span>
-                </div>
-                <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-                <h4 style="color: #fff; margin-bottom: 10px;">1. 프로젝트 개요</h4>
+                <h4 style="color: #fff; margin-top: 0; margin-bottom: 10px;">1. 프로젝트 개요</h4>
                 <ul style="margin-bottom: 20px;">
                     <li><strong>핵심 컨셉:</strong> 2D 웹 기반 MMORPG</li>
                     <li><strong>주요 타겟:</strong> 고어한 컨셉을 좋아하는 20대 MMORPG 유저</li>
                 </ul>
                 <h4 style="color: #fff; margin-bottom: 10px;">2. 주요 담당 업무</h4>
                 <ul>
-                    <li style="margin-bottom: 10px;"><strong>인스턴스 던전:</strong>
+                    <li style="margin-bottom: 15px;"><strong>인스턴스 던전:</strong>
                         <ul style="margin-top: 5px;">
                             <li>엔드게임 콘텐츠가 파밍 목적지 없이 단순 진행형이면 클리어 후 반복 플레이 동기가 사라짐</li>
                             <li>던전마다 특정 아이템 파밍에 특화된 루프 구조로 설계하여 캐릭터 육성 목표와 파밍 동선을 직접 연결</li>
                             <li>목표가 명확한 반복 파밍 패턴 형성, 성장 사이클 내 지속적 접속 동기 확보</li>
                         </ul>
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>보스 패턴 기획:</strong>
+                    <li style="margin-bottom: 15px;"><strong>보스 패턴 기획:</strong>
                         <ul style="margin-top: 5px;">
                             <li>단순 스탯 싸움 구조는 전투 자체의 재미가 없어 체류 시간이 짧아지고 재도전 욕구가 없음</li>
                             <li>BT(Behavior Tree) 기반으로 체력 구간마다 행동 패턴이 전환되는 페이즈 전환 보스를 설계하여 유저가 패턴을 학습하고 공략을 발전시키는 경험을 제공</li>
@@ -191,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         <img src="assets/MADWORLD/매드월드1.png" class="modal-inline-img" alt="보스레이드 기획서 및 테이블">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>인터렉션 오브젝트:</strong>
+                    <li style="margin-bottom: 15px;"><strong>인터렉션 오브젝트:</strong>
                         <ul style="margin-top: 5px;">
                             <li>던전이 전투만으로 채워지면 단조로워 탐험 욕구가 없어지고 맵 활용도가 낮아짐</li>
                             <li>세계관 스토리와 연결된 인터렉션 오브젝트를 배치하고 직접 조작하는 행동감 중심으로 설계하여 전투 외 플레이 요소를 확보</li>
@@ -199,7 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         <img src="assets/MADWORLD/매드월드2.png" class="modal-inline-img" alt="인터렉션 오브젝트 기획서">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>레벨 디자인:</strong>
+                    <li style="margin-bottom: 15px;"><strong>레벨 디자인:</strong>
                         <ul style="margin-top: 5px;">
                             <li>쿼터뷰 시점으로 높낮이 있는 지형을 활용해 공간감을 확보</li>
                             <li>세계관 연계 컨셉을 통한 몬스터 스폰·기믹·퍼즐을 단계적으로 배치, 지형 지물을 활용한 전투 구도 고려</li>
@@ -213,30 +198,19 @@ document.addEventListener('DOMContentLoaded', () => {
         "warofcrown": {
             title: "WAROFCROWN",
             role: "서브 기획",
+            period: "2016.11 ~ 2017.10",
+            badges: ["#Dev", "#Global", "#Live", "#UNITY", "#수집형RPG"],
+            link: null,
             image: "assets/proj_warofcrown.png",
             content: `
-                <p><strong>기간:</strong> 2016.11 ~ 2017.10</p>
-                <div style="margin-top: 10px; margin-bottom: 10px;">
-                    <span class="badge">#Dev</span>
-                    <span class="badge">#Global</span>
-                    <span class="badge">#Live</span>
-                    <span class="badge">#UNITY</span>
-                    <span class="badge">#수집형RPG</span>
-                </div>
-                <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-                <h4 style="color: #fff; margin-bottom: 10px;">1. 프로젝트 개요</h4>
+                <h4 style="color: #fff; margin-top: 0; margin-bottom: 10px;">1. 프로젝트 개요</h4>
                 <ul style="margin-bottom: 20px;">
                     <li><strong>핵심 컨셉:</strong> 수집형 턴제 SRPG</li>
                     <li><strong>주요 타겟:</strong> 전통 SRPG를 좋아하는 2,30대 유저</li>
                 </ul>
-                <div style="text-align: center; margin: 30px 0;">
-                    <a href="warofcrown.html" target="_blank" style="display: inline-block; padding: 15px 30px; background: linear-gradient(135deg, var(--accent-color), #2b82ff); color: #000; text-decoration: none; border-radius: 30px; font-weight: 800; font-size: 1.1rem; box-shadow: 0 4px 15px var(--accent-glow); transition: transform 0.2s;">
-                        📄 WAROFCROWN 상세 기획서 (전체 원본 보기)
-                    </a>
-                </div>
                 <h4 style="color: #fff; margin-bottom: 10px;">2. 주요 담당 업무</h4>
                 <ul>
-                    <li style="margin-bottom: 10px;"><strong>픽업 스토리 컨텐츠:</strong>
+                    <li style="margin-bottom: 15px;"><strong>픽업 스토리 컨텐츠:</strong>
                         <ul style="margin-top: 5px;">
                             <li>신규 캐릭터 출시 시 감정적 연결이 없으면 결제 전환율이 낮아짐</li>
                             <li>픽업 기간 한정으로 캐릭터 전용 스토리 컨텐츠를 설계하여 서사 체험 후 자연스럽게 결제 유도</li>
@@ -244,19 +218,19 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         <img src="assets/WAROFCROWN/워오크1.png" class="modal-inline-img" alt="픽업 캐릭터 컨텐츠 기획서">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>보스 레이드:</strong>
+                    <li style="margin-bottom: 15px;"><strong>보스 레이드:</strong>
                         <ul style="margin-top: 5px;">
                             <li>수집형 RPG는 PvE 중심이라 유저 간 경쟁 요소가 없으면 장기 체류 동기가 약해짐</li>
-                            <li>보스 레이드에 랭킹 경쟁 구조를 도입하고 누적 데미지 기반 실시간 순위 시스템으로 설계</li>
-                            <li>상위 랭크를 목표로 한 반복 도전 유도, 전투력 강화 필요성 인식으로 성장 과금 동기 형성</li>
+                            <li>보스 레이드에 랭킹 경쟁 구조를 도입하고 누적 데미지 기반 실시간 랭킹 시스템으로 설계</li>
+                            <li>상위 랭커를 목표로 한 반복 도전 유도, 전투력 상승 필요성 인지로 성장 BM 연계</li>
                         </ul>
                         <img src="assets/WAROFCROWN/워오크2.png" class="modal-inline-img" alt="보스레이드 기획서 및 테이블">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>일일 초기화 던전:</strong>
+                    <li style="margin-bottom: 15px;"><strong>일일 초기화 던전:</strong>
                         <ul style="margin-top: 5px;">
                             <li>고정 난이도 던전은 라이트 유저에겐 진입 장벽, 헤비 유저에겐 단순 반복이 되어 양쪽 모두 이탈</li>
                             <li>유저가 직접 난이도를 선택하는 구조로 설계하고 난이도별 보상을 차등화</li>
-                            <li>라이트/헤비 유저를 동시에 포용하여 일일 콘텐츠 참여율 안정적 유지</li>
+                            <li>라이트/헤비 유저를 동시에 포용하여일일 콘텐츠 참여율 안정적 유지</li>
                         </ul>
                         <img src="assets/WAROFCROWN/워오크3.png" class="modal-inline-img" alt="일일 초기화 컨텐츠 기획서">
                     </li>
@@ -266,19 +240,12 @@ document.addEventListener('DOMContentLoaded', () => {
         "slashheavens": {
             title: "천지를베다",
             role: "메인 기획",
+            period: "2015.08 ~ 2016.11",
+            badges: ["#Dev", "#Global", "#Live", "#UNITY", "#삼국지", "#수집형RPG"],
+            link: null,
             image: "assets/proj_slash_heavens.png",
             content: `
-                <p><strong>기간:</strong> 2015.08 ~ 2016.11</p>
-                <div style="margin-top: 10px; margin-bottom: 10px;">
-                    <span class="badge">#Dev</span>
-                    <span class="badge">#Global</span>
-                    <span class="badge">#Live</span>
-                    <span class="badge">#UNITY</span>
-                    <span class="badge">#삼국지</span>
-                    <span class="badge">#수집형RPG</span>
-                </div>
-                <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-                <h4 style="color: #fff; margin-bottom: 10px;">1. 프로젝트 개요</h4>
+                <h4 style="color: #fff; margin-top: 0; margin-bottom: 10px;">1. 프로젝트 개요</h4>
                 <ul style="margin-bottom: 20px;">
                     <li><strong>핵심 컨셉:</strong> 삼국지 IP를 활용한 수집형 RPG & 핵앤슬래시 전투</li>
                     <li><strong>주요 타겟:</strong> 삼국지 IP에 익숙한 4,50대 남성 유저</li>
@@ -286,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </ul>
                 <h4 style="color: #fff; margin-bottom: 10px;">2. 주요 담당 업무</h4>
                 <ul>
-                    <li style="margin-bottom: 10px;"><strong>전용 장비 시스템:</strong>
+                    <li style="margin-bottom: 15px;"><strong>전용 장비 시스템:</strong>
                         <ul style="margin-top: 5px;">
                             <li>캐릭터 수집 이후 PLC에 도달하면 추가 성장 동기가 없어 장기 이탈이 발생하는 문제가 있었음</li>
                             <li>캐릭터별 전용 장비를 설계하여 보유 시 특수 능력치와 고유 스킬이 부여되며, 장비에도 캐릭터 성장과 동일한 초월 시스템을 적용해 별도 과금 구조를 추가</li>
@@ -294,14 +261,14 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         <img src="assets/천지를베다/천베1.png" class="modal-inline-img" alt="전용 장비 UI 및 기획서">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>정예 돌격:</strong>
+                    <li style="margin-bottom: 15px;"><strong>정예 돌격:</strong>
                         <ul style="margin-top: 5px;">
                             <li>스토리 콘텐츠 소진 이후 자신의 성장이 어느 수준인지 확인할 수 있는 상시 콘텐츠 기획</li>
                             <li>무한 웨이브 구조로 설계 유저가 스스로 얼마나 많은 전투를 이어갈 수 있는지 직접 검증</li>
                             <li>멀리 진행할수록 보상이 증가하는 구조로 도전 동기 부여, 지속적인 성장 투자와 반복 도전이 맞물리는 상시 콘텐츠로 정착</li>
                         </ul>
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>레벨 디자인:</strong>
+                    <li style="margin-bottom: 15px;"><strong>레벨 디자인:</strong>
                         <ul style="margin-top: 5px;">
                             <li>전투 몰입감을 위한 적 밀도·이동 경로·지형 기믹을 통합 설계</li>
                             <li>직접 플레이 테스트를 반복하여 전투 흐름과 체감 몰입도를 검증</li>
@@ -315,23 +282,19 @@ document.addEventListener('DOMContentLoaded', () => {
         "guardians": {
             title: "가디언즈",
             role: "메인 기획",
+            period: "2014.04 ~ 2015.08",
+            badges: ["#Dev", "#UNITY", "#수집형RPG"],
+            link: null,
             image: "assets/proj_guardians.png",
             content: `
-                <p><strong>기간:</strong> 2014.04 ~ 2015.08</p>
-                <div style="margin-top: 10px; margin-bottom: 10px;">
-                    <span class="badge">#Dev</span>
-                    <span class="badge">#UNITY</span>
-                    <span class="badge">#수집형RPG</span>
-                </div>
-                <hr style="margin: 15px 0; border: 0; border-top: 1px solid rgba(255,255,255,0.1);">
-                <h4 style="color: #fff; margin-bottom: 10px;">1. 프로젝트 개요</h4>
+                <h4 style="color: #fff; margin-top: 0; margin-bottom: 10px;">1. 프로젝트 개요</h4>
                 <ul style="margin-bottom: 20px;">
                     <li><strong>핵심 컨셉:</strong> 12지신을 컨셉으로 한 수집형 RPG</li>
                     <li><strong>주요 타겟:</strong> 2,30대 모바일 게임 유저</li>
                 </ul>
                 <h4 style="color: #fff; margin-bottom: 10px;">2. 주요 담당 업무</h4>
                 <ul>
-                    <li style="margin-bottom: 10px;"><strong>보스 레이드:</strong>
+                    <li style="margin-bottom: 15px;"><strong>보스 레이드:</strong>
                         <ul style="margin-top: 5px;">
                             <li>수집형 RPG에서 캐릭터 획득 동기가 명확하지 않으면 수집 욕구가 희석되고 BM 사이클이 약해짐</li>
                             <li>속성별 전담 보스를 제작해 해당 속성 캐릭터의 강점이 극대화되는 전투 구조로 설계하고 난이도별 보상 체계를 함께 구성</li>
@@ -339,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         </ul>
                         <img src="assets/가디언즈/가디언즈1.png" class="modal-inline-img" alt="보스레이드 기획서 및 테이블">
                     </li>
-                    <li style="margin-bottom: 10px;"><strong>속성 재료 파밍 던전:</strong>
+                    <li style="margin-bottom: 15px;"><strong>속성 재료 파밍 던전:</strong>
                         <ul style="margin-top: 5px;">
                             <li>성장 경로가 불명확하면 유저가 어디서 무엇을 해야 하는지 몰라 이탈이 발생</li>
                             <li>속성별로 전담 파밍 던전을 분리 설계</li>
@@ -355,9 +318,14 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectCards = document.querySelectorAll('.project-card');
     const modalOverlay = document.getElementById('projectModal');
     const closeModalBtn = document.getElementById('closeModal');
+    
+    // Select elements in the new 2-column layout
     const modalTitle = document.getElementById('modalTitle');
     const modalRole = document.getElementById('modalRole');
+    const modalPeriod = document.getElementById('modalPeriod');
     const modalImage = document.getElementById('modalImage');
+    const modalBadges = document.getElementById('modalBadges');
+    const modalLinkContainer = document.getElementById('modalLinkContainer');
     const modalText = document.getElementById('modalText');
 
     projectCards.forEach(card => {
@@ -368,11 +336,36 @@ document.addEventListener('DOMContentLoaded', () => {
             if (data) {
                 modalTitle.textContent = data.title;
                 modalRole.textContent = data.role;
+                modalPeriod.textContent = data.period;
                 modalImage.src = data.image;
                 modalText.innerHTML = data.content;
                 
+                // Clear and render badges
+                modalBadges.innerHTML = '';
+                if (data.badges && data.badges.length > 0) {
+                    data.badges.forEach(badge => {
+                        const span = document.createElement('span');
+                        span.className = 'badge';
+                        span.textContent = badge;
+                        modalBadges.appendChild(span);
+                    });
+                }
+                
+                // Clear and render link
+                modalLinkContainer.innerHTML = '';
+                if (data.link) {
+                    const a = document.createElement('a');
+                    a.href = data.link.url;
+                    a.target = '_blank';
+                    a.className = 'modal-link-btn';
+                    a.textContent = data.link.text;
+                    modalLinkContainer.appendChild(a);
+                }
+                
                 modalOverlay.classList.add('active');
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
+                
+                bindLightboxEvents();
             }
         });
     });
@@ -389,5 +382,140 @@ document.addEventListener('DOMContentLoaded', () => {
         if (e.target === modalOverlay) {
             closeModal();
         }
+    });
+
+    // ==========================================================================
+    // 4. LIGHTBOX ZOOM LOGIC
+    // ==========================================================================
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = document.getElementById('lightboxImage');
+    const lightboxCaption = document.getElementById('lightboxCaption');
+    const closeLightboxBtn = document.getElementById('closeLightbox');
+
+    function bindLightboxEvents() {
+        const inlineImages = modalText.querySelectorAll('.modal-inline-img');
+        inlineImages.forEach(img => {
+            img.addEventListener('click', () => {
+                lightboxImg.src = img.src;
+                lightboxCaption.textContent = img.alt || '작업 산출물 이미지';
+                lightbox.classList.add('active');
+            });
+        });
+    }
+
+    const closeLightbox = () => {
+        lightbox.classList.remove('active');
+    };
+
+    closeLightboxBtn.addEventListener('click', closeLightbox);
+    lightbox.addEventListener('click', (e) => {
+        if (e.target === lightbox || e.target === lightboxImg) {
+            closeLightbox();
+        }
+    });
+
+    // ==========================================================================
+    // 5. THEME SWITCHER LOGIC
+    // ==========================================================================
+    const themeToggleBtn = document.getElementById('themeToggle');
+    
+    // Set initial theme from localStorage or preferred system theme
+    const savedTheme = localStorage.getItem('theme');
+    const systemTheme = window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    const currentTheme = savedTheme || systemTheme;
+    
+    document.documentElement.setAttribute('data-theme', currentTheme);
+
+    themeToggleBtn.addEventListener('click', () => {
+        const theme = document.documentElement.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
+        document.documentElement.setAttribute('data-theme', theme);
+        localStorage.setItem('theme', theme);
+        showToast(theme === 'light' ? '☀️ 라이트 모드로 전환되었습니다.' : '🌙 다크 모드로 전환되었습니다.');
+    });
+
+    // ==========================================================================
+    // 6. CONTACT CLIPBOARD COPY & TOAST UTILITY
+    // ==========================================================================
+    const copyBtns = document.querySelectorAll('.copy-btn');
+    const toast = document.getElementById('toast');
+    const toastMessage = document.getElementById('toastMessage');
+    let toastTimeout;
+
+    const showToast = (message) => {
+        toastMessage.textContent = message;
+        toast.classList.add('active');
+        
+        clearTimeout(toastTimeout);
+        toastTimeout = setTimeout(() => {
+            toast.classList.remove('active');
+        }, 2500);
+    };
+
+    copyBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const textToCopy = btn.getAttribute('data-copy');
+            if (textToCopy) {
+                navigator.clipboard.writeText(textToCopy)
+                    .then(() => {
+                        const type = btn.textContent.includes('✉️') ? '이메일 주소' : '연락처';
+                        showToast(`✨ ${type}가 클립보드에 복사되었습니다!`);
+                    })
+                    .catch(err => {
+                        console.error('복사 실패: ', err);
+                    });
+            }
+        });
+    });
+
+    // ==========================================================================
+    // 7. SKILL CARDS SCROLL ANIMATION (INTERSECTION OBSERVER)
+    // ==========================================================================
+    const skillCards = document.querySelectorAll('.skill-card');
+    
+    const skillObserverOptions = {
+        threshold: 0.2,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const skillObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('play');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, skillObserverOptions);
+
+    skillCards.forEach(card => {
+        skillObserver.observe(card);
+    });
+
+    // ==========================================================================
+    // 8. PROJECT GALLERY FILTERING LOGIC
+    // ==========================================================================
+    const filterBtns = document.querySelectorAll('.filter-btn');
+    const projectCardsList = document.querySelectorAll('.project-card');
+
+    filterBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const filterValue = btn.getAttribute('data-filter');
+
+            projectCardsList.forEach(card => {
+                const categories = card.getAttribute('data-category') ? card.getAttribute('data-category').split(' ') : [];
+
+                if (filterValue === 'all' || categories.includes(filterValue)) {
+                    card.classList.remove('hide');
+                    // Restart CSS fade-in animation by triggering reflow
+                    card.style.animation = 'none';
+                    card.offsetHeight; // trigger reflow
+                    card.style.animation = '';
+                } else {
+                    card.classList.add('hide');
+                }
+            });
+        });
     });
 });
