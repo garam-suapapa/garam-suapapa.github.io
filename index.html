@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>홍가람 | 11년 차 시스템/컨텐츠 기획자</title>
+    <title>홍가람 | 10년 차 시스템/컨텐츠 기획자</title>
     <!-- SEO Meta Tags -->
-    <meta name="description" content="홍가람 - 11년 차 시스템/컨텐츠 기획자 포트폴리오. 다수 상용화 프로젝트 메인기획 및 파트장 경험.">
+    <meta name="description" content="홍가람 - 10년 차 시스템/컨텐츠 기획자 포트폴리오. 다수 상용화 프로젝트 메인기획 및 파트장 경험.">
     <!-- Fonts -->
     <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
     <!-- Floating Header -->
@@ -33,16 +33,15 @@
 
     <!-- Main Content -->
     <div class="container" style="margin-top: 100px;">
-        
         <!-- Main Intro Area (2-Column) -->
         <div class="intro-grid fade-in">
             <!-- Left: Profile -->
-            <aside class="profile-sidebar glass-card hover-glow">
+            <aside class="profile-sidebar glass-card hover-glow" id="profile">
                 <div class="profile-img-wrapper">
                     <img src="assets/user_face.JPG?v=2" alt="홍가람 프로필" class="profile-img">
                 </div>
                 <h1 class="name">홍가람</h1>
-                <h2 class="title">11년 차 시스템/컨텐츠 기획자</h2>
+                <h2 class="title">10년 차 시스템/컨텐츠 기획자</h2>
                 <div class="contact-info">
                     <button class="contact-btn copy-btn" data-copy="white140@naver.com" title="클릭하여 이메일 복사">
                         <span class="icon">✉️</span> white140@naver.com <span class="copy-hint">📋</span>
@@ -54,13 +53,13 @@
                 
                 <div class="core-competencies">
                     <p class="summary-text">
-                        11년간 6개 상용화 타이틀에서 시스템 · 컨텐츠 기획을 주도한<br>MMORPG & 수집형 RPG 전문 기획자입니다.
+                        10년간 6개 상용화 타이틀에서 시스템 · 컨텐츠 기획을 주도한<br>MMORPG & 수집형 RPG 전문 기획자입니다.
                     </p>
                     <p class="summary-text" style="font-weight: normal; font-size: 0.85rem; margin-top: -10px; margin-bottom: 20px; color: var(--text-secondary);">
                         구글 마켓 Top 5 달성 · 글로벌 서비스(대만) 런칭 · 라이브 지표(Retention · ARPPU) 기반 데이터 중심 기획 경험 보유
                     </p>
                     <p class="exp-title">
-                        💼 11년+ 경력, 다수 상용화 프로젝트 메인기획 / 파트장 경험
+                        💼 10년 경력, 다수 상용화 프로젝트 메인기획 / 파트장 경험
                     </p>
                     <ul class="competency-list">
                         <li>MMORPG 시스템 개선 및 대형 컨텐츠 기획</li>
@@ -72,15 +71,15 @@
             </aside>
 
             <!-- Right: Career Timeline -->
-            <section class="career-timeline-area glass-card hover-glow">
-                <h3 class="section-title">🚀 Career History</h3>
+            <section class="career-timeline-area glass-card hover-glow" id="career">
+                <h3 class="section-title">🚀 주요 경력</h3>
                 <div class="timeline">
                     <div class="timeline-item">
                         <div class="timeline-dot"></div>
                         <div class="timeline-content">
                             <div class="timeline-date">2023.05 ~ 2026.02</div>
                             <h4 class="company-name">파우게임즈</h4>
-                            <div class="role-desc">사원 | 시스템 기획 / 컨텐츠 기획</div>
+                            <div class="role-desc">메인 시스템·콘텐츠 기획 | 영웅전설:가가브트릴로지</div>
                         </div>
                     </div>
 
@@ -89,7 +88,7 @@
                         <div class="timeline-content">
                             <div class="timeline-date">2021.06 ~ 2023.04</div>
                             <h4 class="company-name">엑스엘게임즈</h4>
-                            <div class="role-desc">사원 | 시스템 기획</div>
+                            <div class="role-desc">라이브 시스템 기획 | 달빛조각사·다크게이머</div>
                         </div>
                     </div>
 
@@ -98,7 +97,7 @@
                         <div class="timeline-content">
                             <div class="timeline-date">2019.11 ~ 2021.05</div>
                             <h4 class="company-name">잔디소프트</h4>
-                            <div class="role-desc">사원 | 컨텐츠 기획</div>
+                            <div class="role-desc">리드 콘텐츠 기획 | MADWORLD</div>
                         </div>
                     </div>
 
@@ -132,9 +131,48 @@
             </section>
         </div>
 
+        <section class="portfolio featured-projects fade-in" id="projects" aria-labelledby="featuredProjectsTitle">
+            <div class="section-heading-row">
+                <div>
+                    <p class="section-eyebrow">SELECTED WORK</p>
+                    <h2 class="section-title" id="featuredProjectsTitle">대표 프로젝트</h2>
+                </div>
+                <a class="section-link" href="#all-projects">전체 프로젝트 보기 ↓</a>
+            </div>
+            <div class="gallery-grid featured-grid">
+                <div class="project-card glass-card hover-glow" data-project="legend" data-category="rpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="영웅전설 가가브트릴로지 프로젝트 상세 보기">
+                    <div class="img-wrapper"><img src="assets/proj_legend_heroes.png" alt="영웅전설:가가브트릴로지"></div>
+                    <div class="project-info">
+                        <div class="project-meta"><span class="project-role">메인 기획</span><span class="project-period">2023.05 ~ 2026.02</span></div>
+                        <h3>영웅전설:가가브트릴로지</h3>
+                        <p class="project-highlight">길드·시즌 이벤트·추천 편성 등 핵심 콘텐츠와 시스템 설계</p>
+                        <span class="project-cta">상세 사례 보기 →</span>
+                    </div>
+                </div>
+                <div class="project-card glass-card hover-glow" data-project="moonlight" data-category="mmorpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="달빛조각사와 다크게이머 프로젝트 상세 보기">
+                    <div class="img-wrapper"><img src="assets/proj_moonlight.png" alt="달빛조각사 & 다크게이머"></div>
+                    <div class="project-info">
+                        <div class="project-meta"><span class="project-role">서브 기획</span><span class="project-period">2021.06 ~ 2023.04</span></div>
+                        <h3>달빛조각사 & 다크게이머</h3>
+                        <p class="project-highlight">라이브 지표와 유저 피드백 기반 시스템·이벤트 개선</p>
+                        <span class="project-cta">상세 사례 보기 →</span>
+                    </div>
+                </div>
+                <div class="project-card glass-card hover-glow" data-project="madworld" data-category="mmorpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="매드월드 프로젝트 상세 보기">
+                    <div class="img-wrapper"><img src="assets/proj_madworld.png" alt="MADWORLD"></div>
+                    <div class="project-info">
+                        <div class="project-meta"><span class="project-role">리드 기획</span><span class="project-period">2019.11 ~ 2021.05</span></div>
+                        <h3>MADWORLD</h3>
+                        <p class="project-highlight">보스 레이드·탐험 오브젝트·캐릭터 및 전투 맵 기획 리딩</p>
+                        <span class="project-cta">상세 사례 보기 →</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
         <!-- Skills Section -->
-        <section class="skills fade-in">
-            <h3 class="section-title">⚡ Skills & Tools</h3>
+        <section class="skills fade-in" id="skills">
+            <h3 class="section-title">⚡ 실무 역량 & 도구</h3>
             <div class="skills-grid">
                 
                 <!-- Skill Item -->
@@ -142,7 +180,7 @@
                     <div class="skill-tooltip">기획서 작성, DB 연동 문서화, 일정 관리 및 협업 툴 관리</div>
                     <div class="skill-info">
                         <span class="skill-name">Notion</span>
-                        <span class="skill-level">Level 3</span>
+                        <span class="skill-evidence">문서·협업 운영</span>
                     </div>
                     <div class="skill-bars">
                         <div class="bar active"></div>
@@ -157,7 +195,7 @@
                     <div class="skill-tooltip">밸런스 시뮬레이터 설계, 수식 연동 데이터 가공 및 테이블 구조 설계</div>
                     <div class="skill-info">
                         <span class="skill-name">Excel</span>
-                        <span class="skill-level">Level 5</span>
+                        <span class="skill-evidence">시뮬레이션·데이터 설계</span>
                     </div>
                     <div class="skill-bars">
                         <div class="bar active"></div>
@@ -172,7 +210,7 @@
                     <div class="skill-tooltip">상용 프로젝트 씬 설정, UI 배치, 데이터 테이블 로드 및 테스트 수행</div>
                     <div class="skill-info">
                         <span class="skill-name">Unity</span>
-                        <span class="skill-level">Level 5</span>
+                        <span class="skill-evidence">상용 프로젝트 실무</span>
                     </div>
                     <div class="skill-bars">
                         <div class="bar active"></div>
@@ -186,8 +224,8 @@
                 <div class="skill-card glass-card hover-glow">
                     <div class="skill-tooltip">AI 프롬프트 엔지니어링을 활용한 초기 컨셉 도출, 코드 보조, 기획 초안 고도화</div>
                     <div class="skill-info">
-                        <span class="skill-name">Claude & Gemini (AI)</span>
-                        <span class="skill-level">Level 4</span>
+                        <span class="skill-name">AI</span>
+                        <span class="skill-evidence">업무 보조</span>
                     </div>
                     <div class="skill-bars">
                         <div class="bar active"></div>
@@ -202,20 +240,19 @@
         </section>
 
         <!-- Portfolio Gallery -->
-        <section class="portfolio fade-in">
-            <h3 class="section-title">🎮 Portfolio Projects</h3>
+        <section class="portfolio fade-in" id="all-projects">
+            <h3 class="section-title">🎮 전체 프로젝트</h3>
             
             <!-- Category Filter Tabs -->
             <div class="filter-container">
                 <button class="filter-btn active" data-filter="all">전체보기</button>
                 <button class="filter-btn" data-filter="rpg">수집형 RPG</button>
                 <button class="filter-btn" data-filter="mmorpg">MMORPG</button>
-                <button class="filter-btn" data-filter="etc">삼국지 & 기타</button>
             </div>
 
             <div class="gallery-grid">
                 
-                <div class="project-card glass-card hover-glow" data-project="legend" data-category="rpg">
+                <div class="project-card glass-card hover-glow" data-project="legend" data-category="rpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="영웅전설 가가브트릴로지 프로젝트 상세 보기">
                     <div class="img-wrapper">
                         <img src="assets/proj_legend_heroes.png" alt="영웅전설:가가브트릴로지">
                     </div>
@@ -224,7 +261,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="moonlight" data-category="mmorpg">
+                <div class="project-card glass-card hover-glow" data-project="moonlight" data-category="mmorpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="달빛조각사와 다크게이머 프로젝트 상세 보기">
                     <div class="img-wrapper">
                         <img src="assets/proj_moonlight.png" alt="달빛조각사 & 다크게이머">
                     </div>
@@ -233,7 +270,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="madworld" data-category="mmorpg">
+                <div class="project-card glass-card hover-glow" data-project="madworld" data-category="mmorpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="매드월드 프로젝트 상세 보기">
                     <div class="img-wrapper">
                         <img src="assets/proj_madworld.png" alt="MADWORLD">
                     </div>
@@ -242,7 +279,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="warofcrown" data-category="rpg">
+                <div class="project-card glass-card hover-glow" data-project="warofcrown" data-category="rpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="워오브크라운 프로젝트 상세 보기">
                     <div class="img-wrapper">
                         <img src="assets/proj_warofcrown.png" alt="WAROFCROWN">
                     </div>
@@ -251,7 +288,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="slashheavens" data-category="rpg etc">
+                <div class="project-card glass-card hover-glow" data-project="slashheavens" data-category="rpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="천지를베다 프로젝트 상세 보기">
                     <div class="img-wrapper">
                         <img src="assets/proj_slash_heavens.png" alt="천지를베다">
                     </div>
@@ -260,7 +297,7 @@
                     </div>
                 </div>
 
-                <div class="project-card glass-card hover-glow" data-project="guardians" data-category="rpg">
+                <div class="project-card glass-card hover-glow" data-project="guardians" data-category="rpg" tabindex="0" role="button" aria-haspopup="dialog" aria-label="가디언즈 프로젝트 상세 보기">
                     <div class="img-wrapper">
                         <img src="assets/proj_guardians.png" alt="가디언즈">
                     </div>
@@ -278,9 +315,9 @@
     </div>
 
     <!-- Project Modal -->
-    <div class="modal-overlay" id="projectModal">
-        <div class="modal-content glass-card">
-            <button class="modal-close" id="closeModal">&times;</button>
+    <div class="modal-overlay" id="projectModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" aria-hidden="true">
+        <div class="modal-content glass-card" tabindex="-1">
+            <button class="modal-close" id="closeModal" aria-label="프로젝트 상세 닫기">&times;</button>
             <div class="modal-grid">
                 <!-- Left: Sticky Sidebar -->
                 <div class="modal-sidebar">
@@ -326,6 +363,6 @@
         <span class="toast-message" id="toastMessage">복사되었습니다!</span>
     </div>
 
-    <script src="script.js"></script>
+    <script src="script.js?v=5"></script>
 </body>
 </html>

@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', () => {
             role: "메인 기획",
             period: "2023.05 ~ 2026.02",
             badges: ["#Dev", "#Global", "#Live", "#수집형RPG"],
-            link: { text: "📄 영웅전설 작업 산출물 (전체 원본 보기)", url: "legendofheroes.html" },
+            link: { text: "📄 작업 산출물", url: "legendofheroes.html" },
             image: "assets/proj_legend_heroes.png",
             content: `
                 <h4 style="color: #fff; margin-top: 0; margin-bottom: 10px;">1. 프로젝트 개요</h4>
@@ -105,7 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
             role: "서브 기획",
             period: "2021.06 ~ 2023.04",
             badges: ["#Dev", "#Global", "#Live", "#MMORPG", "#UNITY"],
-            link: { text: "📄 달빛조각사 작업 산출물 (전체 원본 보기)", url: "moonlight.html" },
+            link: { text: "📄 작업 산출물", url: "moonlight.html" },
             image: "assets/proj_moonlight.png",
             content: `
                 <h4 style="color: #fff; margin-top: 0; margin-bottom: 10px;">1. 프로젝트 개요</h4>
@@ -318,6 +318,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const projectCards = document.querySelectorAll('.project-card');
     const modalOverlay = document.getElementById('projectModal');
     const closeModalBtn = document.getElementById('closeModal');
+    const modalContent = modalOverlay.querySelector('.modal-content');
+    let previouslyFocusedElement = null;
     
     // Select elements in the new 2-column layout
     const modalTitle = document.getElementById('modalTitle');
@@ -328,8 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const modalLinkContainer = document.getElementById('modalLinkContainer');
     const modalText = document.getElementById('modalText');
 
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
+    const openProjectModal = (card) => {
             const projectId = card.getAttribute('data-project');
             const data = projectData[projectId];
             
@@ -363,16 +364,32 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 
                 modalOverlay.classList.add('active');
+                modalOverlay.setAttribute('aria-hidden', 'false');
                 document.body.style.overflow = 'hidden'; // Prevent background scrolling
-                
+                previouslyFocusedElement = card;
+                modalContent.focus();
+
                 bindLightboxEvents();
+            }
+    };
+
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => openProjectModal(card));
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                openProjectModal(card);
             }
         });
     });
 
     const closeModal = () => {
         modalOverlay.classList.remove('active');
+        modalOverlay.setAttribute('aria-hidden', 'true');
         document.body.style.overflow = 'auto';
+        if (previouslyFocusedElement) {
+            previouslyFocusedElement.focus();
+        }
     };
 
     closeModalBtn.addEventListener('click', closeModal);
@@ -380,6 +397,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Close modal when clicking outside the content
     modalOverlay.addEventListener('click', (e) => {
         if (e.target === modalOverlay) {
+            closeModal();
+        }
+    });
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && modalOverlay.classList.contains('active')) {
             closeModal();
         }
     });
@@ -494,7 +517,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 8. PROJECT GALLERY FILTERING LOGIC
     // ==========================================================================
     const filterBtns = document.querySelectorAll('.filter-btn');
-    const projectCardsList = document.querySelectorAll('.project-card');
+    const projectCardsList = document.querySelectorAll('#all-projects .project-card');
 
     filterBtns.forEach(btn => {
         btn.addEventListener('click', () => {
