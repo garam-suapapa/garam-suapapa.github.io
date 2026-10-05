@@ -30,3 +30,4 @@
 .document-format{display:block;margin-top:3px;font-size:.73rem;font-weight:500;color:var(--muted)}
 .document-case-link{align-self:center;color:var(--accent);font-size:.85rem;font-weight:700;text-underline-offset:4px}
 @media(max-width:650px){.document-card{grid-template-columns:1fr;gap:24px;padding:22px}.document-copy h3{font-size:1.4rem}}
+.document-card+.document-card{margin-top:16px}
