@@ -37,74 +37,13 @@
     <div class="case-content">
       <section class="case-section" id="heart">
         <div class="section-index">PROJECT 01</div>
-        <div class="section-body">
-          <p class="ai-project-label">Heart in Deck · Godot 프로토타입</p>
-          <h2>기획 데이터를<br>실제 전투에 연결하기</h2>
-          <p>엑셀에서 관리하는 적 정보와 행동 패턴, 웨이브 구성을 게임에 연결했습니다. 여러 적이 함께 등장하고, 모두 쓰러뜨리면 다음 웨이브로 진행하는 전투 구조를 구현했습니다.</p>
-          <div class="decision">기획에서 정한 전투 규칙이 데이터와 실행 화면에서 함께 확인되도록 구성했습니다.</div>
-          <ol class="ai-flow" aria-label="기획 데이터 연결 흐름">
-            <li><span>기획 데이터</span><strong>엑셀</strong><small>적 · 행동 · 웨이브</small></li>
-            <li><span>데이터 연결</span><strong>내보내기 · 검증</strong><small>참조와 입력 규칙 확인</small></li>
-            <li><span>플레이 확인</span><strong>Godot 전투</strong><small>대상 선택 · 웨이브 진행</small></li>
-          </ol>
-          <h3>AI와 함께 구현한 범위</h3>
-          <p>데이터 변환과 검증 코드, 적별 체력·상태 관리, 공격 대상 선택과 웨이브 전환을 구현했습니다. 화면에는 적의 다음 행동과 공격 대상, 현재 웨이브를 표시했습니다.</p>
-          <figure class="evidence">
-            <a href="../assets/ai-work/heart-multiwave.png" target="_blank" rel="noopener"><img src="../assets/ai-work/heart-multiwave.png" width="1440" height="900" alt="Heart in Deck 테스트 전투 화면. 두 적의 체력과 다음 행동, 웨이브 1/2와 공격 대상 선택을 표시합니다."></a>
-            <figcaption><strong>다중 적·웨이브를 확인한 테스트 전투</strong>두 적의 체력과 행동을 따로 표시하고, 공격 대상을 선택하는 화면입니다. 우측 상단에 웨이브 1/2가 표시됩니다.</figcaption>
-          </figure>
-          <div class="result-note"><b>구현과 확인</b><p>적 데이터와 웨이브 구성을 전투에 연결하고, 대상·상태·턴 전환 등의 규칙을 확인하는 검증 코드와 실행 화면을 확보했습니다.</p></div>
-        </div>
-      </section>
+        <div class="section-body"><h2>기획 데이터를<br>실제 전투에 연결하기</h2><figure class="evidence"><a href="../assets/ai-work/heart-multiwave.png" target="_blank" rel="noopener"><img src="../assets/ai-work/heart-multiwave.png" width="1440" height="900" loading="lazy" alt="Heart in Deck · 프로토타입 실행 화면"></a><figcaption><strong>Heart in Deck · 프로토타입 실행 화면</strong>적별 체력과 다음 행동, 공격 대상과 현재 웨이브를 확인하는 테스트 전투입니다.</figcaption></figure><p>엑셀에서 관리하는 적 정보·행동 패턴·웨이브 구성을 Godot 전투에 연결한 개인 프로토타입입니다.</p><h3>담당 작업</h3><ul><li>적·행동·웨이브 데이터를 정리하고 내보내기·검증 흐름을 구성했습니다.</li><li>AI와 함께 데이터 변환·검증, 적별 상태 관리, 공격 대상 선택과 웨이브 전환을 구현했습니다.</li></ul></div></section>
       <section class="case-section" id="water">
         <div class="section-index">PROJECT 02</div>
-        <div class="section-body">
-          <p class="ai-project-label">물 마시기 기록 · 웹앱</p>
-          <h2>생활 기록과 보상을<br>하나의 흐름으로 연결하기</h2>
-          <p>물을 마신 양을 기록하고, 누적량에 따라 보상 놀이에 참여할 수 있도록 만들었습니다. 섭취량 입력부터 오늘의 진행도, 룰렛 참여와 날짜별 기록까지 이어지는 흐름입니다.</p>
-          <div class="logic-grid">
-            <article class="logic-card"><span>기록</span><h3>양 입력과 진행도 확인</h3><p>빠른 입력 버튼과 직접 입력으로 마신 양을 기록하고, 오늘의 목표 진행도를 표시합니다.</p></article>
-            <article class="logic-card"><span>보상</span><h3>누적량과 룰렛 연결</h3><p>300mL마다 룰렛 기회를 얻고 하루 최대 3회까지 참여합니다. 결과는 오늘 받은 보상으로 남깁니다.</p></article>
-          </div>
-          <ol class="ai-flow" aria-label="물 기록과 보상 규칙">
-            <li><span>입력</span><strong>물 마신 양 기록</strong><small>빠른 입력 · 직접 입력</small></li>
-            <li><span>규칙</span><strong>300mL마다 기회</strong><small>하루 최대 3회</small></li>
-            <li><span>결과</span><strong>룰렛 · 기록 저장</strong><small>보상 내역 · 날짜별 달력</small></li>
-          </ol>
-          <h3>AI와 함께 구현한 범위</h3>
-          <p>섭취량 입력, 목표 진행도, 날짜별 달력과 보상 룰렛을 구현했습니다. 오늘 사용한 룰렛 횟수와 보상 내역을 브라우저에 저장하고, 날짜가 바뀌면 새 하루의 기록으로 진행하도록 연결했습니다.</p>
-          <div class="evidence-pair">
-            <figure class="evidence">
-              <a href="../assets/ai-work/water-tracker.png" target="_blank" rel="noopener"><img src="../assets/ai-work/water-tracker.png" width="1280" height="900" loading="lazy" alt="물 마시기 앱의 기록 화면. 로컬 시연에서 300mL를 입력한 진행도와 빠른 입력 버튼을 표시합니다."></a>
-              <figcaption><strong>섭취량 입력과 목표 진행도</strong>로컬 앱에 300mL를 입력한 시연 화면입니다. 오늘의 기록과 목표 대비 진행도를 함께 표시합니다.</figcaption>
-            </figure>
-            <figure class="evidence">
-              <a href="../assets/ai-work/water-roulette.png" target="_blank" rel="noopener"><img src="../assets/ai-work/water-roulette.png" width="1280" height="1069" loading="lazy" alt="물 마시기 앱의 보상 룰렛 화면. 300mL 입력으로 생긴 룰렛 기회 1회와 보상 항목, 오늘 받은 보상 영역을 표시합니다."></a>
-              <figcaption><strong>기록량과 연결된 보상 룰렛</strong>300mL 입력으로 룰렛 기회 1회가 생긴 시연 화면입니다. 보상 항목과 룰렛 버튼, 결과 기록 영역을 보여줍니다.</figcaption>
-            </figure>
-          </div>
-          <div class="result-note"><b>결과물</b><p>오늘의 물 기록과 보상 결과, 날짜별 기록을 저장하는 웹앱입니다. 생활 기록을 보상 참여와 연결하는 기능을 구현했습니다.</p></div>
-        </div>
-      </section>
+        <div class="section-body"><h2>생활 기록과 보상을<br>하나의 흐름으로 연결하기</h2><figure class="evidence"><a href="../assets/ai-work/water-tracker.png" target="_blank" rel="noopener"><img src="../assets/ai-work/water-tracker.png" width="1280" height="900" loading="lazy" alt="물 마시기 기록 · 웹앱 실행 화면"></a><figcaption><strong>물 마시기 기록 · 웹앱 실행 화면</strong>섭취량 입력과 오늘의 목표 진행도를 확인하는 로컬 시연 화면입니다.</figcaption></figure><p>물 섭취량 기록과 목표 진행도, 누적량에 따른 보상 놀이를 연결한 웹앱입니다.</p><h3>담당 작업</h3><ul><li>300mL마다 룰렛 기회를 제공하고 하루 최대 3회 참여하는 규칙을 구성했습니다.</li><li>AI와 함께 섭취량 입력·달력·룰렛을 구현하고, 날짜별 기록과 보상 내역을 브라우저에 저장하도록 연결했습니다.</li></ul></div></section>
       <section class="case-section" id="wardrobe">
         <div class="section-index">PROJECT 03</div>
-        <div class="section-body">
-          <p class="ai-project-label">옷장·인형놀이 · 웹 시제품</p>
-          <h2>꾸민 캐릭터와<br>계속 놀 수 있는 화면 만들기</h2>
-          <p>캐릭터의 옷과 악세서리를 고른 뒤, 꾸민 캐릭터를 무대에서 움직이며 놀 수 있도록 만들었습니다. 캐릭터 선택, 꾸미기와 저장, 무대 배치까지 이어지는 웹 프로토타입입니다.</p>
-          <figure class="evidence">
-            <a href="../assets/ai-work/wardrobe-prototype.png" target="_blank" rel="noopener"><img src="../assets/ai-work/wardrobe-prototype.png" width="1280" height="800" loading="lazy" alt="옷장 놀이 시제품의 꾸미기 화면. 왼쪽 캐릭터 선택과 중앙 착용 모습, 오른쪽 의상 목록과 다음 단계 버튼을 표시합니다."></a>
-            <figcaption><strong>캐릭터 선택과 옷 갈아입히기 화면</strong>기존 시제품 캡처입니다. 선택한 옷의 착용 모습과 의상 목록을 함께 보여주고, 악세서리·배경·놀이 단계로 이어집니다.</figcaption>
-          </figure>
-          <h3>AI와 함께 구현한 범위</h3>
-          <p>옷·악세서리·배경 변경, 코디 저장과 무대 배치를 구현했습니다. 여러 친구를 함께 배치하고 각각 움직이거나, 현재 배치를 단체 사진으로 저장하는 기능까지 연결했습니다.</p>
-          <div class="logic-grid">
-            <article class="logic-card"><span>꾸미기</span><h3>선택한 코디 저장</h3><p>캐릭터별로 코디를 보관하고, 다음 놀이에서도 불러올 수 있도록 구성했습니다.</p></article>
-            <article class="logic-card"><span>놀이</span><h3>여러 친구를 무대에 배치</h3><p>친구별 위치와 앞뒤 순서를 저장하고, 현재 무대를 단체 사진으로 남깁니다.</p></article>
-          </div>
-          <div class="result-note"><b>결과물</b><p>꾸미기와 인형놀이를 직접 조작해볼 수 있는 웹 시제품입니다. 화면과 인터랙션을 통해 놀이 흐름을 구체화했습니다.</p></div>
-        </div>
-      </section>
+        <div class="section-body"><h2>꾸민 캐릭터와<br>계속 놀 수 있는 화면 만들기</h2><figure class="evidence"><a href="../assets/ai-work/wardrobe-prototype.png" target="_blank" rel="noopener"><img src="../assets/ai-work/wardrobe-prototype.png" width="1280" height="800" loading="lazy" alt="하츄핑 옷장·인형놀이 · 프로토타입 실행 화면"></a><figcaption><strong>하츄핑 옷장·인형놀이 · 프로토타입 실행 화면</strong>캐릭터 선택과 의상 목록, 선택한 옷의 착용 모습을 보여주는 기존 시제품 캡처입니다.</figcaption></figure><p>하츄핑 캐릭터의 옷과 악세서리를 고르고, 꾸민 캐릭터를 무대에 배치해 노는 웹 프로토타입입니다.</p><h3>담당 작업</h3><ul><li>캐릭터 선택 → 꾸미기와 코디 저장 → 무대 배치로 이어지는 놀이 흐름을 구성했습니다.</li><li>AI와 함께 옷·악세서리·배경 변경, 친구별 위치·앞뒤 순서 저장과 단체 사진 기능을 구현했습니다.</li></ul></div></section>
     </div>
     <footer class="case-footer"><span>홍가람 · 시스템/콘텐츠 기획</span><a href="../index.html#ai-work">포트폴리오로 돌아가기</a></footer>
   </main>
