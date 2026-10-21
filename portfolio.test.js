@@ -15,7 +15,7 @@ test('submission HTML redirects to the public portfolio with a fallback link', (
   assert.match(redirectHtml, /<a href="https:\/\/garam-suapapa\.github\.io\/"/i);
 });
 
-test('career work is one continuous document before tools and contact', () => {
+test('career index stays compact before tools and contact', () => {
   const profileIndex = html.indexOf('id="profile"');
   const projectIndex = html.indexOf('id="projects"');
   const careerIndex = html.indexOf('id="career"');
@@ -23,11 +23,13 @@ test('career work is one continuous document before tools and contact', () => {
   assert.ok(profileIndex > -1 && careerIndex > profileIndex);
   assert.ok(projectIndex > careerIndex && skillsIndex > projectIndex);
   assert.doesNotMatch(html, /class="featured-grid"|class="project-list"/);
-  assert.ok(html.indexOf('id="legend-memory"') < html.indexOf('id="legend-stamina"'));
-  assert.ok(html.indexOf('id="moonlight-raid"') < html.indexOf('id="moonlight-event"'));
+  const main = html.match(/<main\b[\s\S]*?<\/main>/)[0];
+  assert.doesNotMatch(main, /class="case-section"|class="evidence"|class="case-cover"/);
+  assert.ok(main.indexOf('data-work="legend-memory"') < main.indexOf('data-work="legend-stamina"'));
+  assert.ok(main.indexOf('data-work="moonlight-raid"') < main.indexOf('data-work="moonlight-event"'));
 });
 
-test('all six careers expose their full case content inline', () => {
+test('all six careers preserve full case content in a shared dialog', () => {
   for (const name of caseFiles) {
     assert.ok(html.includes(`id="career-${name}"`));
     const source = fs.readFileSync(path.join('cases', `${name}.html`), 'utf8');
@@ -36,7 +38,9 @@ test('all six careers expose their full case content inline', () => {
     }
     assert.ok(fs.existsSync(path.join('cases', `${name}.html`)));
   }
-  assert.doesNotMatch(html, /id="projectModal"|aria-haspopup="dialog"/);
+  assert.match(html, /<dialog class="career-dialog" id="career-dialog" aria-labelledby="dialog-title">/);
+  assert.equal([...html.matchAll(/class="dialog-chapter"/g)].length, 7);
+  assert.match(html, /aria-haspopup="dialog"/);
 });
 
 test('case studies contain readable static content and common navigation', () => {
@@ -71,7 +75,7 @@ test('persistent contents link to unique existing targets including the appendix
   assert.match(html, /id="ai-heart"/);
   assert.match(script, /setAttribute\('aria-current', 'location'\)/);
   for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
-    const local = match[1].split('?')[0];
+    const local = match[1].split(/[?#]/)[0];
     if (!/^(https?:|mailto:|tel:)/.test(local)) assert.ok(fs.existsSync(local), local);
   }
 });

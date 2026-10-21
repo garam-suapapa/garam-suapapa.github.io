@@ -1,4 +1,4 @@
-/* One continuous document, with a persistent career/work index. */
+/* Career index on the page; continuous work details inside a dialog. */
 .scroll-portfolio{--reading-offset:100px}
 .scroll-portfolio .nav-shell{max-width:1440px}
 .portfolio-layout{max-width:1440px;margin:auto;display:grid;grid-template-columns:246px minmax(0,1fr);gap:48px;padding:0 32px}
@@ -22,16 +22,20 @@
 .work-intro h2{font-size:1.8rem;margin:0;letter-spacing:-.05em}
 .work-intro>p:last-child{color:var(--muted);font-size:.92rem}
 .anchor-alias{position:absolute;top:0}
-.career-chapter{padding:26px 0 64px;border-bottom:1px solid var(--line)}
-.chapter-header{display:grid;grid-template-columns:minmax(0,1fr) 32%;align-items:center;gap:28px;padding:32px 0}
+.career-chapter{padding:22px 0 30px;border-bottom:1px solid var(--line)}
+.chapter-header{display:block;padding:20px 0}
 .chapter-header h2{font-size:clamp(1.9rem,3vw,3rem);line-height:1.17;letter-spacing:-.055em;margin:0 0 18px}
 .chapter-header .case-cover{height:auto;aspect-ratio:4/3;object-fit:contain;background:var(--surface);box-shadow:none;border:1px solid var(--line)}
 .chapter-header .chapter-lead{font-size:.95rem;color:var(--muted);margin:18px 0 0}
-.chapter-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.chapter-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .chapter-overview a{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--surface);border:1px solid var(--line);border-radius:6px;text-decoration:none;font-size:.86rem;font-weight:650}
 .chapter-overview a:hover{border-color:var(--accent);color:var(--accent)}
 .chapter-overview span{font-size:.7rem;color:var(--muted)}
 .chapter-overview b{margin-left:auto;color:var(--accent)}
+.work-copy{min-width:0;flex:1}
+.chapter-overview .work-copy{color:var(--ink);font-size:.86rem}
+.work-copy strong{display:block;font-weight:750}
+.work-copy small{display:block;color:var(--muted);font-size:.76rem;font-weight:400;margin-top:4px;line-height:1.5}
 .scroll-portfolio .case-section{display:block;padding:50px 0}
 .scroll-portfolio .section-index{padding:0;margin-bottom:15px;font-size:.75rem}
 .scroll-portfolio .section-body>h3{font-size:clamp(1.7rem,2.7vw,2.4rem);line-height:1.25;letter-spacing:-.045em;margin:0 0 22px;color:var(--ink)}
@@ -78,5 +82,37 @@ html:has(.scroll-portfolio){scroll-padding-top:0}
   .scroll-portfolio .section-body>h3{font-size:1.7rem}
   .scroll-portfolio .skills-grid{grid-template-columns:1fr}
   .work-intro{padding-top:36px}.career-chapter{padding-bottom:40px}
+}
+html{scrollbar-gutter:stable}
+body.dialog-open{position:fixed;top:var(--page-scroll-top);width:100%;overflow:hidden}
+.career-dialog{width:calc(100% - 64px);max-width:1120px;height:calc(100dvh - 64px);max-height:960px;padding:0;border:1px solid var(--line);border-radius:14px;background:var(--bg);color:var(--ink);overflow:hidden;box-shadow:0 24px 100px #0005}
+.career-dialog::backdrop{background:rgba(8,20,17,.62);backdrop-filter:blur(4px)}
+.dialog-shell{height:100%;display:grid;grid-template-rows:auto auto minmax(0,1fr)}
+.dialog-toolbar{display:flex;align-items:center;gap:20px;padding:17px 24px;border-bottom:1px solid var(--line);background:var(--bg)}
+.dialog-toolbar button{flex:none;min-height:44px;padding:8px 12px;border:1px solid var(--line);border-radius:6px;background:var(--surface);color:var(--ink);cursor:pointer;font-size:.83rem;font-weight:700}
+.dialog-toolbar button:hover{border-color:var(--accent);color:var(--accent)}
+.dialog-heading{flex:1;min-width:0}
+.dialog-heading h2{font-size:1.2rem;line-height:1.35;letter-spacing:-.04em;margin:0}
+.dialog-heading p{font-size:.76rem;color:var(--accent);margin:3px 0 0;font-weight:650}
+.dialog-toc{display:flex;gap:6px;padding:12px 24px;overflow-x:auto;overscroll-behavior:contain;scrollbar-width:thin;border-bottom:1px solid var(--line);background:var(--bg)}
+.dialog-toc a{flex:none;text-decoration:none;white-space:nowrap;padding:7px 12px;border:1px solid var(--line);border-radius:5px;font-size:.78rem;color:var(--muted)}
+.dialog-toc a[aria-current="location"]{background:var(--accent-soft);color:var(--accent);border-color:var(--accent);font-weight:750}
+.dialog-scroll{min-height:0;overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:0 40px 48px;overflow-anchor:none}
+.dialog-scroll:focus-visible{outline-offset:-4px}
+.dialog-chapter[hidden]{display:none}
+.dialog-scroll .case-section{scroll-margin-top:20px}
+.dialog-scroll .case-section:first-child{padding-top:32px}
+.dialog-scroll .section-index{margin-bottom:14px}
+@media(max-width:760px){
+ html{scrollbar-gutter:auto}
+ .career-dialog{width:100vw;max-width:100vw;height:100dvh;max-height:100dvh;margin:0;border:0;border-radius:0}
+ .dialog-toolbar{gap:10px;padding:10px 12px}
+ .dialog-toolbar button{font-size:.77rem;padding:6px 9px}
+ .dialog-heading h2{font-size:.96rem}
+ .dialog-heading p{font-size:.7rem}
+ .dialog-toc{padding:9px 14px}
+ .dialog-toc a{font-size:.75rem;padding:7px 10px}
+ .dialog-scroll{padding:0 18px 40px}
+ .dialog-scroll .case-section:first-child{padding-top:26px}
 }
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

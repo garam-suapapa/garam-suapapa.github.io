@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const sidebar = document.getElementById('portfolio-toc');
   const tocToggle = document.getElementById('tocToggle');
   const position = document.getElementById('reading-position');
-  const sections = [...document.querySelectorAll('[data-scroll-section]')];
+  const sections = [...document.querySelectorAll('main [data-scroll-section]')];
   if (!sidebar || !tocToggle || !sections.length) return;
   root.classList.add('has-scroll-nav');
   const links = [...sidebar.querySelectorAll('.toc-link')];
@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
   sections.forEach((section) => { section.tabIndex = -1; });
   const updatePosition = () => {
     scheduled = false;
+    if (document.getElementById('career-dialog')?.open) return;
     const offset = parseFloat(getComputedStyle(document.body).getPropertyValue('--reading-offset')) || 100;
     let current = sections[0];
     for (const section of sections) {
@@ -104,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
   window.addEventListener('resize', scheduleUpdate);
   window.addEventListener('hashchange', scheduleUpdate);
   window.addEventListener('load', scheduleUpdate);
+  document.addEventListener('portfolio:dialogclose', scheduleUpdate);
   mobile.addEventListener('change', closeToc);
   new ResizeObserver(scheduleUpdate).observe(document.querySelector('main'));
   updatePosition();
