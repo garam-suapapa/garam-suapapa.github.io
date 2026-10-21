@@ -23,9 +23,10 @@
 .work-intro>p:last-child{color:var(--muted);font-size:.92rem}
 .anchor-alias{position:absolute;top:0}
 .career-chapter{padding:22px 0 30px;border-bottom:1px solid var(--line)}
-.chapter-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,32%);align-items:center;gap:28px;padding:20px 0}
+.chapter-header{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,32%);align-items:start;gap:28px;padding:20px 0}
 .chapter-header h2{font-size:clamp(1.9rem,3vw,3rem);line-height:1.17;letter-spacing:-.055em;margin:0 0 18px}
-.chapter-header .case-cover{width:100%;height:auto;aspect-ratio:16/9;object-fit:contain;background:var(--surface);box-shadow:none;border:1px solid var(--line)}
+.chapter-header .case-cover{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover;object-position:center;border:0;box-shadow:none}
+#career-slashheavens .case-cover,#ai-work .case-cover{object-position:center top}
 .chapter-header .chapter-lead{font-size:.95rem;color:var(--muted);margin:18px 0 0}
 .chapter-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
 .chapter-overview a{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--surface);border:1px solid var(--line);border-radius:6px;text-decoration:none;font-size:.86rem;font-weight:650}
@@ -51,7 +52,7 @@ html:has(.scroll-portfolio){scroll-padding-top:0}
 .scroll-portfolio .section-block{padding:55px 0}
 @media(max-width:1050px){
   .portfolio-layout{grid-template-columns:210px minmax(0,1fr);gap:28px;padding:0 24px}
-  .chapter-header{grid-template-columns:1fr}.chapter-header .case-cover{width:100%;max-width:360px}
+  .chapter-header{grid-template-columns:minmax(0,1fr) minmax(160px,32%)}
   .scroll-portfolio .profile-hero{grid-template-columns:85px minmax(0,1fr);gap:20px}
   .scroll-portfolio .profile-photo{width:85px;height:110px}
   .scroll-portfolio .profile-facts{gap:14px;flex-wrap:wrap}
@@ -75,8 +76,8 @@ html:has(.scroll-portfolio){scroll-padding-top:0}
   .scroll-portfolio .profile-copy .eyebrow,.scroll-portfolio .profile-copy h1,.scroll-portfolio .hero-lead{grid-column:2}
   .scroll-portfolio .profile-copy h1{font-size:2rem}
   .scroll-portfolio .hero-summary,.scroll-portfolio .profile-facts{grid-column:1/-1}
-  .chapter-header{gap:22px;padding-top:20px}.chapter-header h2{font-size:2rem}
-  .chapter-header .case-cover{width:100%;max-width:400px;aspect-ratio:16/9}
+  .chapter-header{grid-template-columns:1fr;gap:22px;padding-top:20px}.chapter-header h2{font-size:2rem}
+  .chapter-header .case-cover{width:100%;max-width:none;aspect-ratio:16/9}
   .chapter-overview{grid-template-columns:1fr}
   .scroll-portfolio .case-section{padding:38px 0}
   .scroll-portfolio .section-body>h3{font-size:1.7rem}
