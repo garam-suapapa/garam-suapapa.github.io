@@ -24,7 +24,8 @@ test('career index stays compact before tools and contact', () => {
   assert.ok(projectIndex > careerIndex && skillsIndex > projectIndex);
   assert.doesNotMatch(html, /class="featured-grid"|class="project-list"/);
   const main = html.match(/<main\b[\s\S]*?<\/main>/)[0];
-  assert.doesNotMatch(main, /class="case-section"|class="evidence"|class="case-cover"/);
+  assert.doesNotMatch(main, /class="case-section"|class="evidence"/);
+  assert.equal([...main.matchAll(/class="case-cover"/g)].length, 7);
   assert.ok(main.indexOf('data-work="legend-memory"') < main.indexOf('data-work="legend-stamina"'));
   assert.ok(main.indexOf('data-work="moonlight-raid"') < main.indexOf('data-work="moonlight-event"'));
 });
