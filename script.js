@@ -34,13 +34,77 @@ document.addEventListener('DOMContentLoaded', () => {
       catch { showToast('복사하지 못했습니다. 직접 선택해 주세요.'); }
     });
   });
-  const filters = document.querySelectorAll('.filter-btn');
-  const projects = document.querySelectorAll('.project-row');
-  filters.forEach((button) => {
-    button.addEventListener('click', () => {
-      const filter = button.dataset.filter;
-      filters.forEach((item) => { const active = item === button; item.classList.toggle('active', active); item.setAttribute('aria-pressed', String(active)); });
-      projects.forEach((project) => { project.hidden = filter !== 'all' && project.dataset.category !== filter; });
-    });
+  const sidebar = document.getElementById('portfolio-toc');
+  const tocToggle = document.getElementById('tocToggle');
+  const position = document.getElementById('reading-position');
+  const sections = [...document.querySelectorAll('[data-scroll-section]')];
+  if (!sidebar || !tocToggle || !sections.length) return;
+  root.classList.add('has-scroll-nav');
+  const links = [...sidebar.querySelectorAll('.toc-link')];
+  const groups = [...sidebar.querySelectorAll('[data-toc-group]')];
+  const mobile = matchMedia('(max-width: 760px)');
+  let currentId;
+  let scheduled = false;
+  const closeToc = () => {
+    sidebar.classList.remove('is-open');
+    tocToggle.setAttribute('aria-expanded', 'false');
+  };
+  tocToggle.addEventListener('click', () => {
+    const open = sidebar.classList.toggle('is-open');
+    tocToggle.setAttribute('aria-expanded', String(open));
   });
+  sidebar.addEventListener('click', (event) => {
+    const link = event.target.closest('a[href^="#"]');
+    if (!link) return;
+    closeToc();
+    const target = document.getElementById(link.hash.slice(1));
+    target?.focus({ preventScroll: true });
+  });
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && sidebar.classList.contains('is-open')) {
+      closeToc();
+      tocToggle.focus();
+    }
+  });
+  document.addEventListener('click', (event) => {
+    if (!sidebar.contains(event.target) && !tocToggle.contains(event.target)) closeToc();
+  });
+  sections.forEach((section) => { section.tabIndex = -1; });
+  const updatePosition = () => {
+    scheduled = false;
+    const offset = parseFloat(getComputedStyle(document.body).getPropertyValue('--reading-offset')) || 100;
+    let current = sections[0];
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= offset + 12) current = section;
+      else break;
+    }
+    if (window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 3) current = sections.at(-1);
+    if (current.id === currentId) return;
+    currentId = current.id;
+    groups.forEach((group) => group.classList.toggle('is-current', group.dataset.tocGroup === current.dataset.group));
+    let activeLink;
+    links.forEach((link) => {
+      const active = link.hash === `#${currentId}`;
+      if (active) { link.setAttribute('aria-current', 'location'); activeLink = link; }
+      else link.removeAttribute('aria-current');
+    });
+    position.textContent = current.dataset.label;
+    if (activeLink && !mobile.matches) {
+      const bounds = sidebar.getBoundingClientRect();
+      const activeBounds = activeLink.getBoundingClientRect();
+      if (activeBounds.top < bounds.top || activeBounds.bottom > bounds.bottom) {
+        sidebar.scrollTop += activeBounds.top - bounds.top - sidebar.clientHeight / 2;
+      }
+    }
+  };
+  const scheduleUpdate = () => {
+    if (!scheduled) { scheduled = true; requestAnimationFrame(updatePosition); }
+  };
+  window.addEventListener('scroll', scheduleUpdate, { passive: true });
+  window.addEventListener('resize', scheduleUpdate);
+  window.addEventListener('hashchange', scheduleUpdate);
+  window.addEventListener('load', scheduleUpdate);
+  mobile.addEventListener('change', closeToc);
+  new ResizeObserver(scheduleUpdate).observe(document.querySelector('main'));
+  updatePosition();
 });

@@ -1,0 +1,82 @@
+/* One continuous document, with a persistent career/work index. */
+.scroll-portfolio{--reading-offset:100px}
+.scroll-portfolio .nav-shell{max-width:1440px}
+.portfolio-layout{max-width:1440px;margin:auto;display:grid;grid-template-columns:246px minmax(0,1fr);gap:48px;padding:0 32px}
+.scroll-portfolio .site-main{min-width:0;width:100%;padding:34px 0 70px;margin:0}
+.portfolio-sidebar{position:sticky;top:98px;align-self:start;max-height:calc(100dvh - 120px);overflow-y:auto;overscroll-behavior:contain;scrollbar-width:thin;padding:14px 16px 14px 0;border-right:1px solid var(--line)}
+.toc-heading{display:flex;justify-content:space-between;color:var(--muted);font-size:.68rem;letter-spacing:.06em;padding:0 10px 16px}
+.portfolio-toc a{display:block;text-decoration:none;padding:7px 11px;font-size:.79rem;line-height:1.45;border-left:2px solid transparent;color:var(--muted);border-radius:0 5px 5px 0}
+.portfolio-toc a:hover{background:var(--surface-2);color:var(--ink)}
+.portfolio-toc .toc-company{padding-top:12px;padding-bottom:12px}
+.toc-company span{display:block;font-weight:750;color:var(--ink);font-size:.84rem}
+.toc-company small{display:block;font-size:.71rem;margin-top:3px}
+.toc-children{padding:0 0 8px 12px}
+.has-scroll-nav .toc-group:not(.is-current) .toc-children{display:none}
+.portfolio-toc a[aria-current="location"]{color:var(--accent);background:var(--accent-soft);border-left-color:var(--accent);font-weight:800}
+.toc-group.is-current>.toc-company span{color:var(--accent)}
+.reading-bar{display:none}
+.scroll-portfolio .profile-hero{grid-template-columns:130px minmax(0,1fr);gap:30px;padding:24px 0 44px}
+.scroll-portfolio .profile-photo{width:130px;height:165px}
+.scroll-portfolio .profile-copy h1{font-size:clamp(2rem,3.7vw,3.6rem);line-height:1.16}
+.work-intro{position:relative;padding:52px 0 20px}
+.work-intro h2{font-size:1.8rem;margin:0;letter-spacing:-.05em}
+.work-intro>p:last-child{color:var(--muted);font-size:.92rem}
+.anchor-alias{position:absolute;top:0}
+.career-chapter{padding:26px 0 64px;border-bottom:1px solid var(--line)}
+.chapter-header{display:grid;grid-template-columns:minmax(0,1fr) 32%;align-items:center;gap:28px;padding:32px 0}
+.chapter-header h2{font-size:clamp(1.9rem,3vw,3rem);line-height:1.17;letter-spacing:-.055em;margin:0 0 18px}
+.chapter-header .case-cover{height:auto;aspect-ratio:4/3;object-fit:contain;background:var(--surface);box-shadow:none;border:1px solid var(--line)}
+.chapter-header .chapter-lead{font-size:.95rem;color:var(--muted);margin:18px 0 0}
+.chapter-overview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;padding-bottom:32px;border-bottom:1px solid var(--line)}
+.chapter-overview a{display:flex;align-items:center;gap:12px;padding:13px 16px;background:var(--surface);border:1px solid var(--line);border-radius:6px;text-decoration:none;font-size:.86rem;font-weight:650}
+.chapter-overview a:hover{border-color:var(--accent);color:var(--accent)}
+.chapter-overview span{font-size:.7rem;color:var(--muted)}
+.chapter-overview b{margin-left:auto;color:var(--accent)}
+.scroll-portfolio .case-section{display:block;padding:50px 0}
+.scroll-portfolio .section-index{padding:0;margin-bottom:15px;font-size:.75rem}
+.scroll-portfolio .section-body>h3{font-size:clamp(1.7rem,2.7vw,2.4rem);line-height:1.25;letter-spacing:-.045em;margin:0 0 22px;color:var(--ink)}
+.scroll-portfolio .section-body h4{font-size:1.1rem;margin:30px 0 9px;line-height:1.5}
+.scroll-portfolio .logic-card h4,.scroll-portfolio .work-card h4{font-size:1rem;margin:0 0 7px}
+.scroll-portfolio .evidence{margin:28px 0 20px}
+.scroll-portfolio .evidence img{max-height:760px;object-fit:contain;background:var(--surface)}
+.scroll-portfolio .case-section:last-child{border-bottom:0;padding-bottom:0}
+.scroll-portfolio [data-scroll-section],.scroll-portfolio .work-intro{scroll-margin-top:var(--reading-offset)}
+.scroll-portfolio{scroll-padding-top:0}
+html:has(.scroll-portfolio){scroll-padding-top:0}
+.scroll-portfolio .skills-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+.scroll-portfolio .section-block{padding:55px 0}
+@media(max-width:1050px){
+  .portfolio-layout{grid-template-columns:210px minmax(0,1fr);gap:28px;padding:0 24px}
+  .chapter-header{grid-template-columns:1fr}.chapter-header .case-cover{width:240px;aspect-ratio:16/9}
+  .scroll-portfolio .profile-hero{grid-template-columns:85px minmax(0,1fr);gap:20px}
+  .scroll-portfolio .profile-photo{width:85px;height:110px}
+  .scroll-portfolio .profile-facts{gap:14px;flex-wrap:wrap}
+  .scroll-portfolio .profile-facts div+div{padding-left:0;border:0}
+}
+@media(max-width:760px){
+  .scroll-portfolio{--reading-offset:142px}
+  .scroll-portfolio .nav-shell{min-height:64px;padding:0 16px}
+  .scroll-portfolio .nav-links{display:none}.scroll-portfolio .theme-toggle{margin-left:auto}
+  .reading-bar{position:sticky;top:64px;z-index:90;display:flex;align-items:center;gap:12px;min-height:54px;padding:8px 16px;background:var(--bg);border-bottom:1px solid var(--line)}
+  #reading-position{min-width:0;flex:1;font-size:.77rem;font-weight:700;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--accent)}
+  #tocToggle{flex:none;min-height:36px;border:1px solid var(--line);border-radius:5px;background:var(--surface);color:var(--ink);padding:5px 10px;font-size:.8rem}
+  .portfolio-layout{display:block;padding:0 18px}
+  .portfolio-sidebar{position:relative;top:auto;max-height:55dvh;padding:12px;border:1px solid var(--line);margin-top:16px;background:var(--bg)}
+  .has-scroll-nav .portfolio-sidebar{display:none;position:fixed;z-index:95;top:118px;left:12px;right:12px;margin:0;max-height:calc(100dvh - 136px);box-shadow:var(--shadow);border-radius:0 0 8px 8px}
+  .has-scroll-nav .portfolio-sidebar.is-open{display:block}
+  .scroll-portfolio .site-main{padding-top:20px}
+  .scroll-portfolio .profile-hero{grid-template-columns:76px minmax(0,1fr);gap:16px}
+  .scroll-portfolio .profile-photo{width:76px;height:94px}
+  .scroll-portfolio .profile-copy{display:contents}
+  .scroll-portfolio .profile-copy .eyebrow,.scroll-portfolio .profile-copy h1,.scroll-portfolio .hero-lead{grid-column:2}
+  .scroll-portfolio .profile-copy h1{font-size:2rem}
+  .scroll-portfolio .hero-summary,.scroll-portfolio .profile-facts{grid-column:1/-1}
+  .chapter-header{gap:22px;padding-top:20px}.chapter-header h2{font-size:2rem}
+  .chapter-header .case-cover{width:100%;max-width:400px;aspect-ratio:16/9}
+  .chapter-overview{grid-template-columns:1fr}
+  .scroll-portfolio .case-section{padding:38px 0}
+  .scroll-portfolio .section-body>h3{font-size:1.7rem}
+  .scroll-portfolio .skills-grid{grid-template-columns:1fr}
+  .work-intro{padding-top:36px}.career-chapter{padding-bottom:40px}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

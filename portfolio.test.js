@@ -15,18 +15,25 @@ test('submission HTML redirects to the public portfolio with a fallback link', (
   assert.match(redirectHtml, /<a href="https:\/\/garam-suapapa\.github\.io\/"/i);
 });
 
-test('featured projects appear before career and skills', () => {
+test('career work is one continuous document before tools and contact', () => {
   const profileIndex = html.indexOf('id="profile"');
   const projectIndex = html.indexOf('id="projects"');
   const careerIndex = html.indexOf('id="career"');
   const skillsIndex = html.indexOf('id="skills"');
-  assert.ok(profileIndex > -1 && projectIndex > profileIndex);
-  assert.ok(careerIndex > projectIndex && skillsIndex > careerIndex);
+  assert.ok(profileIndex > -1 && careerIndex > profileIndex);
+  assert.ok(projectIndex > careerIndex && skillsIndex > projectIndex);
+  assert.doesNotMatch(html, /class="featured-grid"|class="project-list"/);
+  assert.ok(html.indexOf('id="legend-memory"') < html.indexOf('id="legend-stamina"'));
+  assert.ok(html.indexOf('id="moonlight-raid"') < html.indexOf('id="moonlight-event"'));
 });
 
-test('all six projects use direct case-study links', () => {
+test('all six careers expose their full case content inline', () => {
   for (const name of caseFiles) {
-    assert.match(html, new RegExp(`href="cases/${name}\\.html"`));
+    assert.ok(html.includes(`id="career-${name}"`));
+    const source = fs.readFileSync(path.join('cases', `${name}.html`), 'utf8');
+    for (const match of source.matchAll(/class="case-section" id="([^"]+)"/g)) {
+      assert.ok(html.includes(`id="${name}-${match[1]}"`));
+    }
     assert.ok(fs.existsSync(path.join('cases', `${name}.html`)));
   }
   assert.doesNotMatch(html, /id="projectModal"|aria-haspopup="dialog"/);
@@ -55,12 +62,18 @@ test('skills retain the concise OA and AI labels', () => {
   assert.doesNotMatch(html, /Level\s*[1-5]|Claude &amp; Gemini/);
 });
 
-test('project filters expose useful categories and pressed state', () => {
-  assert.match(html, /data-filter="rpg"/);
-  assert.match(html, /data-filter="mmorpg"/);
-  assert.doesNotMatch(html, /data-filter="etc"/);
-  assert.match(script, /project\.hidden = filter !== 'all'/);
-  assert.match(script, /setAttribute\('aria-pressed'/);
+test('persistent contents link to unique existing targets including the appendix', () => {
+  const ids = [...html.matchAll(/\bid="([^"]+)"/g)].map(match => match[1]);
+  assert.equal(new Set(ids).size, ids.length, 'IDs must stay unique after merging case pages');
+  for (const match of html.matchAll(/href="#([^"]+)"/g)) assert.ok(ids.includes(match[1]), match[1]);
+  assert.match(html, /id="portfolio-toc"/);
+  assert.match(html, /id="reading-position"/);
+  assert.match(html, /id="ai-heart"/);
+  assert.match(script, /setAttribute\('aria-current', 'location'\)/);
+  for (const match of html.matchAll(/(?:src|href)="([^"#]+)"/g)) {
+    const local = match[1].split('?')[0];
+    if (!/^(https?:|mailto:|tel:)/.test(local)) assert.ok(fs.existsSync(local), local);
+  }
 });
 
 test('theme selection is shared by main, case, and deliverable pages', () => {
